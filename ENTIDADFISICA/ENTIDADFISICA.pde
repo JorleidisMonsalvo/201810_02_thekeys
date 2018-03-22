@@ -8,6 +8,19 @@ int inputPin = 2;               // choose the input pin (for PIR sensor)
 int pirState = LOW;             // we start, assuming no motion detected
 int val = 0; 
 
+//Minimum voltage required for an alert
+const double MIN_VOLTAGE = 1.2;
+
+//Battery measure pin
+const int BATTERY_PIN = A0;
+
+//Battery indicator
+const int BATTERY_LED = 15;
+
+//Current battery charge
+double batteryCharge;
+
+
 //Specified password
 const String KEY = "1234";
 String keys[4] = {"1234","1235","1236","1237"};
@@ -96,8 +109,27 @@ void setup() {
 	attempts = 0;
 	block = false;
         contadorParcial=0;
+        
+         // Ouput pin definition for BATTERY_LED
+  pinMode(BATTERY_LED,OUTPUT);
+
+  //Input pin definition for battery measure
+  pinMode(BATTERY_PIN,INPUT);
 }
 void loop() {
+  ///////////////////////////////////////Battery////////////////////////////////////////////////////////
+  
+  batteryCharge = (analogRead(BATTERY_PIN)*5.4)/1024;
+  
+  //Measured value comparison with min voltage required
+  if(batteryCharge<=MIN_VOLTAGE) {
+    digitalWrite(BATTERY_LED,HIGH);
+    Serial.println("LOW BATTERY");
+  }
+  else {
+    digitalWrite(BATTERY_LED,LOW);
+  }
+  
 
 	//////////////////////////////////////////////////////////////////////////////PIR///////////////////////
 	val = digitalRead(inputPin);  // read input value
