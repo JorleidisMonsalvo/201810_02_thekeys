@@ -15,16 +15,14 @@ for message in consumer:
     print(message.value)
     print(message.value.decode('utf-8'))
     print(message.topic)
+    url = "http://172.24.42.79:8080/alarmas"
+    print(url)
+    response = requests.post(url,data_string,headers={'Content-type': 'application/json'})
+    print("Response Status Code: " + str(response.status_code))
 #	sense = json_data['temperature']
 #	location = message.topic.split('.')
 #	sensor_code = location[3]
-
-#	url = 'http://172.24.42.73:8080/sensors/' + sensor_code + '/realtimedata'
 #	payload = {
 #		'samplingTime': sensetime,
 #		'dataValue': sense['data']
 #    }
-#	response = requests.post(url, data=json.dumps(payload),
-#							 headers={'Content-type': 'application/json'})
-
-#	print("Response Status Code: " + str(response.status_code))
