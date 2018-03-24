@@ -53,47 +53,26 @@ import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
 @Produces(MediaType.APPLICATION_JSON)
 public class InmuebleService {
     private final IInmuebleLogic inmuebleLogic;
-    private final IConsolidatedDataLogic consolidateddataLogic;
-    private final IAlarmaLogic sensorLogic;
+    private final IAlarmaLogic alarmaLogic;
 
     public InmuebleService() {
         this.inmuebleLogic = new InmuebleLogic();
-        this.consolidateddataLogic = new ConsolidatedDataLogic();
-        this.sensorLogic = new AlarmaLogic();
+        this.alarmaLogic = new AlarmaLogic();
     }
 
     @POST
     public InmuebleDTO add(InmuebleDTO dto) {
         return inmuebleLogic.add(dto);
     }
-
-    @POST
-    @Path("{code}/consolidateddata")
-    public ConsolidatedDataDTO addConsolidatedData(@PathParam("code") String code, ConsolidatedDataDTO dto) {
-        InmuebleDTO room = inmuebleLogic.findCode(code);
-        //Find the id of the measurement associated with the first sensor on the room
-//        dto.setMeasurementID(sensorLogic.find(room.getSensors().get(0)).getMeasurements().get(0));
-        dto.setRoomID(room.getId());
-        ConsolidatedDataDTO result = consolidateddataLogic.add(dto);
-//        room.addConsolidatedData(dto.getId());
-        inmuebleLogic.update(room);
-        return result;
-    }
     
-    @GET
-    @Path("{code}/consolidateddata")
-    public List<ConsolidatedDataDTO> getConsolidatedData(@PathParam("code") String code) {
-        InmuebleDTO room = inmuebleLogic.findCode(code);
-        return consolidateddataLogic.findByRoomId(room.getId());
-    }
     
     @POST
-    @Path("{code}/sensors")
-    public AlarmaDTO addSensor(@PathParam("code") String code, AlarmaDTO dto) {
-        InmuebleDTO room = inmuebleLogic.findCode(code);
-        AlarmaDTO result = sensorLogic.add(dto);
-//        room.addSensor(dto.getId());
-        inmuebleLogic.update(room);
+    @Path("{id}/alarmas")
+    public AlarmaDTO addAlarma(@PathParam("id") String id, AlarmaDTO dto) {
+        InmuebleDTO inmueble = inmuebleLogic.find(id);
+        AlarmaDTO result = alarmaLogic.add(dto);
+        inmueble.addAlarma(dto.getId());
+        inmuebleLogic.update(inmueble);
         return result;
     }
 

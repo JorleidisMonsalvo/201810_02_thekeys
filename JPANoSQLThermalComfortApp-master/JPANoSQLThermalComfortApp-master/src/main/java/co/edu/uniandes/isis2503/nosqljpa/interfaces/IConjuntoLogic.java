@@ -21,67 +21,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
+package co.edu.uniandes.isis2503.nosqljpa.interfaces;
 
-import java.util.ArrayList;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConjuntoDTO;
 import java.util.List;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author ca.mendoza968
  */
-@XmlRootElement
-public class FloorDTO {
-    private String id;
-    private String name;
-    private String code;
-    private List<String> rooms;
-
-    public FloorDTO() {
-        this.rooms = new ArrayList();
-    }
-
-    public FloorDTO(String id, String name, String code, List<String> rooms) {
-        this.id = id;
-        this.name = name;
-        this.code = code;
-        this.rooms = rooms;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public List<String> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(List<String> rooms) {
-        this.rooms = rooms;
-    }
-    
-    public void addRoom(String id) {
-        this.rooms.add(id);
-    }
+public interface IConjuntoLogic {
+    public ConjuntoDTO add(ConjuntoDTO dto);
+    public ConjuntoDTO update(ConjuntoDTO dto);
+    public ConjuntoDTO find(String id);
+    public ConjuntoDTO findCode(String code);
+    public List<ConjuntoDTO> all();
+    public Boolean delete(String id);
 }

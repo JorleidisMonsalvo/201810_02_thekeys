@@ -21,20 +21,56 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.interfaces;
+package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
 
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.FloorDTO;
+import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author ca.mendoza968
  */
-public interface IFloorLogic {
-    public FloorDTO add(FloorDTO dto);
-    public FloorDTO update(FloorDTO dto);
-    public FloorDTO find(String id);
-    public FloorDTO findCode(String code);
-    public List<FloorDTO> all();
-    public Boolean delete(String id);
+@XmlRootElement
+public class ConjuntoDTO {
+    private String id;
+    private String nombre;
+    private String direccion;
+//    private List<String> rooms;
+
+    public ConjuntoDTO() {
+//        this.rooms = new ArrayList();
+    }
+
+    public ConjuntoDTO(String id, String name, String direccion) {
+        this.id = id;
+        this.nombre = name;
+        this.direccion = direccion;
+//        this.rooms = rooms;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }

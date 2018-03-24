@@ -39,9 +39,9 @@ public class AlarmaDTO {
     public AlarmaDTO() {
     }
 
-    public AlarmaDTO(String id, String code, List<String> realTimeData, List<String> measurements) {
+    public AlarmaDTO(String id, String tipo) {
         this.id = id;
-        this.tipo = code;
+        this.tipo = tipo;
     }
 
     public String getId() {

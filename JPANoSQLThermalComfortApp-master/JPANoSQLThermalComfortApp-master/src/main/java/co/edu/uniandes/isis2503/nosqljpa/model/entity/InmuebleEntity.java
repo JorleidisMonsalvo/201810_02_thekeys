@@ -24,6 +24,7 @@
 package co.edu.uniandes.isis2503.nosqljpa.model.entity;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.ElementCollection;
@@ -46,14 +47,27 @@ public class InmuebleEntity implements Serializable {
     private String direccion;
     
     private String cerradura;
+    
+    @ElementCollection
+    private List<String> alarmas;
 
-    public InmuebleEntity() {
+    public List<String> getAlarmas() {
+        return alarmas;
     }
 
-    public InmuebleEntity(String id, String direccion, String cerradura) {
+    public void setAlarmas(List<String> alarmas) {
+        this.alarmas = alarmas;
+    }
+
+    public InmuebleEntity() {
+        this.alarmas=new ArrayList<>();
+    }
+
+    public InmuebleEntity(String id, String direccion, String cerradura, List<String> alarmas) {
         this.id = id;
         this.direccion = direccion;
         this.cerradura = cerradura;
+        this.alarmas= alarmas;
     }
 
     public String getCerradura() {

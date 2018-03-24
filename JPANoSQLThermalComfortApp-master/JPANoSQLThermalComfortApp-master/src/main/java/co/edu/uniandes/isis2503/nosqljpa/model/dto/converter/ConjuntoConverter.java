@@ -23,56 +23,56 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.model.dto.converter;
 
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IFloorConverter;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.FloorDTO;
-import co.edu.uniandes.isis2503.nosqljpa.model.entity.FloorEntity;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConjuntoDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.entity.ConjuntoEntity;
 import java.util.ArrayList;
 import java.util.List;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IConjuntoConverter;
 
 /**
  *
  * @author ca.mendoza968
  */
-public class FloorConverter implements IFloorConverter {
+public class ConjuntoConverter implements IConjuntoConverter {
 
-    public static IFloorConverter CONVERTER = new FloorConverter();
+    public static IConjuntoConverter CONVERTER = new ConjuntoConverter();
 
-    public FloorConverter() {
+    public ConjuntoConverter() {
     }
 
     @Override
-    public FloorDTO entityToDto(FloorEntity entity) {
-        FloorDTO dto = new FloorDTO();
+    public ConjuntoDTO entityToDto(ConjuntoEntity entity) {
+        ConjuntoDTO dto = new ConjuntoDTO();
         dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        dto.setCode(entity.getCode());
-        dto.setRooms(entity.getRooms());
+        dto.setNombre(entity.getDireccion());
+        dto.setDireccion(entity.getNombre());
+//        dto.setRooms(entity.getRooms());
         return dto;
     }
 
     @Override
-    public FloorEntity dtoToEntity(FloorDTO dto) {
-        FloorEntity entity = new FloorEntity();
+    public ConjuntoEntity dtoToEntity(ConjuntoDTO dto) {
+        ConjuntoEntity entity = new ConjuntoEntity();
         entity.setId(dto.getId());
-        entity.setName(dto.getName());
-        entity.setCode(dto.getCode());
-        entity.setRooms(dto.getRooms());
+        entity.setDireccion(dto.getNombre());
+        entity.setNombre(dto.getDireccion());
+//        entity.setRooms(dto.getRooms());
         return entity;
     }
 
     @Override
-    public List<FloorDTO> listEntitiesToListDTOs(List<FloorEntity> entities) {
-        ArrayList<FloorDTO> dtos = new ArrayList<>();
-        for (FloorEntity entity : entities) {
+    public List<ConjuntoDTO> listEntitiesToListDTOs(List<ConjuntoEntity> entities) {
+        ArrayList<ConjuntoDTO> dtos = new ArrayList<>();
+        for (ConjuntoEntity entity : entities) {
             dtos.add(entityToDto(entity));
         }
         return dtos;
     }
 
     @Override
-    public List<FloorEntity> listDTOsToListEntities(List<FloorDTO> dtos) {
-        ArrayList<FloorEntity> entities = new ArrayList<>();
-        for (FloorDTO dto : dtos) {
+    public List<ConjuntoEntity> listDTOsToListEntities(List<ConjuntoDTO> dtos) {
+        ArrayList<ConjuntoEntity> entities = new ArrayList<>();
+        for (ConjuntoDTO dto : dtos) {
             entities.add(dtoToEntity(dto));
         }
         return entities;

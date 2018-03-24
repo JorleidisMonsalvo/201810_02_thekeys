@@ -38,43 +38,43 @@ import org.hibernate.annotations.DynamicUpdate;
  */
 @Entity
 @Table(name = "FLOOR")
-public class FloorEntity implements Serializable {
+public class ConjuntoEntity implements Serializable {
 
     @Id
     private String id;
     
-    private String name;
+    private String direccion;
     
-    private String code;
+    private String nombre;
+//
+//    @ElementCollection
+//    private List<String> rooms;
 
-    @ElementCollection
-    private List<String> rooms;
-
-    public FloorEntity() {
-        this.rooms = new ArrayList();
+    public ConjuntoEntity() {
+//        this.rooms = new ArrayList();
     }
 
-    public FloorEntity(String id, String name, String code, List<String> rooms) {
+    public ConjuntoEntity(String id, String direccion, String nombre) {
         this.id = id;
-        this.name = name;
-        this.code = code;
-        this.rooms = rooms;
+        this.direccion = direccion;
+        this.nombre = nombre;
+//        this.rooms = rooms;
     }
 
-    public String getCode() {
-        return code;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
-    public String getName() {
-        return name;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getId() {
@@ -83,14 +83,6 @@ public class FloorEntity implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public List<String> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(List<String> rooms) {
-        this.rooms = rooms;
     }
 
 }

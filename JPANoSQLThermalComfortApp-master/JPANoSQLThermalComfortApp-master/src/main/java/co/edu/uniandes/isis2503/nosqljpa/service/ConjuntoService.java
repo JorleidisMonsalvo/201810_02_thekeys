@@ -23,10 +23,9 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.service;
 
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IFloorLogic;
-import co.edu.uniandes.isis2503.nosqljpa.logic.FloorLogic;
+import co.edu.uniandes.isis2503.nosqljpa.logic.ConjuntoLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.InmuebleLogic;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.FloorDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConjuntoDTO;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO;
 import com.sun.istack.logging.Logger;
 import java.util.List;
@@ -41,62 +40,63 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IConjuntoLogic;
 
 /**
  *
  * @author ca.mendoza968
  */
-@Path("/floors")
+@Path("/conjuntos")
 @Produces(MediaType.APPLICATION_JSON)
-public class FloorService {
+public class ConjuntoService {
 
-    private final IFloorLogic floorLogic;
+    private final IConjuntoLogic conjuntoLogic;
     private final IInmuebleLogic roomLogic;
 
-    public FloorService() {
-        this.floorLogic = new FloorLogic();
+    public ConjuntoService() {
+        this.conjuntoLogic = new ConjuntoLogic();
         this.roomLogic = new InmuebleLogic();
     }
 
     @POST
-    public FloorDTO add(FloorDTO dto) {
-        return floorLogic.add(dto);
+    public ConjuntoDTO add(ConjuntoDTO dto) {
+        return conjuntoLogic.add(dto);
     }
 
     @POST
     @Path("{code}/rooms")
     public InmuebleDTO addRoom(@PathParam("code") String code, InmuebleDTO dto) {
-        FloorDTO floor = floorLogic.findCode(code);
+        ConjuntoDTO floor = conjuntoLogic.findCode(code);
         InmuebleDTO result = roomLogic.add(dto);
-        floor.addRoom(dto.getId());
-        floorLogic.update(floor);
+//        floor.addRoom(dto.getId());
+        conjuntoLogic.update(floor);
         return result;
     }
 
     @PUT
-    public FloorDTO update(FloorDTO dto) {
-        return floorLogic.update(dto);
+    public ConjuntoDTO update(ConjuntoDTO dto) {
+        return conjuntoLogic.update(dto);
     }
 
     @GET
     @Path("/{id}")
-    public FloorDTO find(@PathParam("id") String id) {
-        return floorLogic.find(id);
+    public ConjuntoDTO find(@PathParam("id") String id) {
+        return conjuntoLogic.find(id);
     }
 
     @GET
-    public List<FloorDTO> all() {
-        return floorLogic.all();
+    public List<ConjuntoDTO> all() {
+        return conjuntoLogic.all();
     }
 
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") String id) {
         try {
-            floorLogic.delete(id);
+            conjuntoLogic.delete(id);
             return Response.status(200).header("Access-Control-Allow-Origin", "*").entity("Sucessful: Floor was deleted").build();
         } catch (Exception e) {
-            Logger.getLogger(FloorService.class).log(Level.WARNING, e.getMessage());
+            Logger.getLogger(ConjuntoService.class).log(Level.WARNING, e.getMessage());
             return Response.status(500).header("Access-Control-Allow-Origin", "*").entity("We found errors in your query, please contact the Web Admin.").build();
         }
     }
