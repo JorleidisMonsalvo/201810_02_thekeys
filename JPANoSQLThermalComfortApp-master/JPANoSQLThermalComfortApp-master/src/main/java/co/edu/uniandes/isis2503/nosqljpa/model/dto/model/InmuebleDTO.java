@@ -33,33 +33,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ca.mendoza968
  */
 @XmlRootElement
-public class RoomDTO {
+public class InmuebleDTO {
      @Id
     private String id;
-    private String name;
-    private String code;
-    private List<String> consolidatedData;
-    private List<String> sensors;
-
-    public RoomDTO() {
-        consolidatedData = new ArrayList();
-        sensors =  new ArrayList();
+    private String direccion;
+    private String cerradura;
+    
+    public InmuebleDTO() {
     }
 
-    public RoomDTO(String id, String name, String code, List<String> consolidatedData, List<String> sensors) {
+    public InmuebleDTO(String id, String direccion, String cerradura) {
         this.id = id;
-        this.name = name;
-        this.code = code;
-        this.consolidatedData = consolidatedData;
-        this.sensors = sensors;
+        this.direccion = direccion;
+        this.cerradura = cerradura;
     }
 
-    public String getCode() {
-        return code;
+    public String getCerradura() {
+        return cerradura;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCerradura(String cerradura) {
+        this.cerradura = cerradura;
     }
 
     public String getId() {
@@ -70,36 +64,12 @@ public class RoomDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public List<String> getConsolidatedData() {
-        return consolidatedData;
-    }
-
-    public void setConsolidatedData(List<String> consolidatedData) {
-        this.consolidatedData = consolidatedData;
-    }
-
-    public List<String> getSensors() {
-        return sensors;
-    }
-
-    public void setSensors(List<String> sensors) {
-        this.sensors = sensors;
-    }
-    
-    public void addConsolidatedData(String id) {
-        this.consolidatedData.add(id);
-    }
-    
-    public void addSensor(String id) {
-        this.sensors.add(id);
-    }
-    
 }

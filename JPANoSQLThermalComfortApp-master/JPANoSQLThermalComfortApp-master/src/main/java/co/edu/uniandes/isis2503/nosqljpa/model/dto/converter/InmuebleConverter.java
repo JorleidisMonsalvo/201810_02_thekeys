@@ -23,58 +23,54 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.model.dto.converter;
 
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IRoomConverter;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.RoomDTO;
-import co.edu.uniandes.isis2503.nosqljpa.model.entity.RoomEntity;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.entity.InmuebleEntity;
 import java.util.ArrayList;
 import java.util.List;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleConverter;
 
 /**
  *
  * @author ca.mendoza968
  */
-public class RoomConverter implements IRoomConverter {
+public class InmuebleConverter implements IInmuebleConverter {
 
-    public static IRoomConverter CONVERTER = new RoomConverter();
+    public static IInmuebleConverter CONVERTER = new InmuebleConverter();
 
-    public RoomConverter() {
+    public InmuebleConverter() {
     }
 
     @Override
-    public RoomDTO entityToDto(RoomEntity entity) {
-        RoomDTO dto = new RoomDTO();
+    public InmuebleDTO entityToDto(InmuebleEntity entity) {
+        InmuebleDTO dto = new InmuebleDTO();
         dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        dto.setCode(entity.getCode());
-        dto.setConsolidatedData(entity.getConsolidatedData());
-        dto.setSensors(entity.getSensors());
+        dto.setDireccion(entity.getDireccion());
+        dto.setCerradura(entity.getCerradura());
         return dto;
     }
 
     @Override
-    public RoomEntity dtoToEntity(RoomDTO dto) {
-        RoomEntity entity = new RoomEntity();
+    public InmuebleEntity dtoToEntity(InmuebleDTO dto) {
+        InmuebleEntity entity = new InmuebleEntity();
         entity.setId(dto.getId());
-        entity.setName(dto.getName());
-        entity.setCode(dto.getCode());
-        entity.setSensors(dto.getSensors());
-        entity.setConsolidatedData(dto.getConsolidatedData());
+        entity.setDireccion(dto.getDireccion());
+        entity.setCerradura(dto.getCerradura());
         return entity;
     }
 
     @Override
-    public List<RoomDTO> listEntitiesToListDTOs(List<RoomEntity> entities) {
-        ArrayList<RoomDTO> dtos = new ArrayList<>();
-        for (RoomEntity entity : entities) {
+    public List<InmuebleDTO> listEntitiesToListDTOs(List<InmuebleEntity> entities) {
+        ArrayList<InmuebleDTO> dtos = new ArrayList<>();
+        for (InmuebleEntity entity : entities) {
             dtos.add(entityToDto(entity));
         }
         return dtos;
     }
 
     @Override
-    public List<RoomEntity> listDTOsToListEntities(List<RoomDTO> dtos) {
-        ArrayList<RoomEntity> entities = new ArrayList<>();
-        for (RoomDTO dto : dtos) {
+    public List<InmuebleEntity> listDTOsToListEntities(List<InmuebleDTO> dtos) {
+        ArrayList<InmuebleEntity> entities = new ArrayList<>();
+        for (InmuebleDTO dto : dtos) {
             entities.add(dtoToEntity(dto));
         }
         return entities;

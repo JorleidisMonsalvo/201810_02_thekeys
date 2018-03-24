@@ -3,11 +3,11 @@
   <persistence-unit name="derby_db" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.FloorEntity</class>
-    <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.RoomEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.MeasurementEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.ConsolidatedDataEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.RealTimeDataEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.AlarmaEntity</class>
+    <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.InmuebleEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.connection.autocommit" value="true"/>
@@ -30,11 +30,11 @@
   <persistence-unit name="cassandra_db" transaction-type="RESOURCE_LOCAL">
     <provider>com.impetus.kundera.KunderaPersistence</provider>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.FloorEntity</class>
-    <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.RoomEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.MeasurementEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.ConsolidatedDataEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.RealTimeDataEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.AlarmaEntity</class>
+    <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.InmuebleEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="kundera.nodes" value="localhost"/>

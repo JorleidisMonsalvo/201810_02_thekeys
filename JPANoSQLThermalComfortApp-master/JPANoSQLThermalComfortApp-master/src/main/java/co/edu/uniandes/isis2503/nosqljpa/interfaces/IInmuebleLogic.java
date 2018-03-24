@@ -23,20 +23,18 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.interfaces;
 
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.RoomDTO;
-import co.edu.uniandes.isis2503.nosqljpa.model.entity.RoomEntity;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO;
 import java.util.List;
 
 /**
  *
  * @author ca.mendoza968
  */
-public interface IRoomConverter {
-    public RoomDTO entityToDto(RoomEntity entity);
-
-    public RoomEntity dtoToEntity(RoomDTO dto);
-
-    public List<RoomDTO> listEntitiesToListDTOs(List<RoomEntity> entities);
-
-    public List<RoomEntity> listDTOsToListEntities(List<RoomDTO> dtos);
+public interface IInmuebleLogic {
+    public InmuebleDTO add(InmuebleDTO dto);
+    public InmuebleDTO update(InmuebleDTO dto);
+    public InmuebleDTO find(String id);
+    public InmuebleDTO findCode(String code);
+    public List<InmuebleDTO> all();
+    public Boolean delete(String id);
 }

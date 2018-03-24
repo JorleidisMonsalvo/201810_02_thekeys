@@ -21,20 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.interfaces;
+package co.edu.uniandes.isis2503.nosqljpa.persistence;
 
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.RoomDTO;
-import java.util.List;
+import co.edu.uniandes.isis2503.nosqljpa.model.entity.InmuebleEntity;
 
 /**
  *
  * @author ca.mendoza968
  */
-public interface IRoomLogic {
-    public RoomDTO add(RoomDTO dto);
-    public RoomDTO update(RoomDTO dto);
-    public RoomDTO find(String id);
-    public RoomDTO findCode(String code);
-    public List<RoomDTO> all();
-    public Boolean delete(String id);
+public class InmueblePersistence extends Persistencer<InmuebleEntity, String>{
+
+    public InmueblePersistence(){
+        this.entityClass = InmuebleEntity.class;
+    }
+
 }

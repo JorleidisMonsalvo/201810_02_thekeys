@@ -38,40 +38,30 @@ import org.hibernate.annotations.DynamicUpdate;
  */
 @Entity
 @Table(name = "ROOM")
-public class RoomEntity implements Serializable {
+public class InmuebleEntity implements Serializable {
 
     @Id
     private String id;
 
-    private String name;
+    private String direccion;
     
-    private String code;
+    private String cerradura;
 
-    @ElementCollection
-    private List<String> consolidatedData;
-
-    @ElementCollection
-    private List<String> sensors;
-
-    public RoomEntity() {
-        consolidatedData = new ArrayList();
-        sensors =  new ArrayList();
+    public InmuebleEntity() {
     }
 
-    public RoomEntity(String id, String name, String code, List<String> consolidatedData, List<String> sensors) {
+    public InmuebleEntity(String id, String direccion, String cerradura) {
         this.id = id;
-        this.name = name;
-        this.code = code;
-        this.consolidatedData = consolidatedData;
-        this.sensors = sensors;
+        this.direccion = direccion;
+        this.cerradura = cerradura;
     }
 
-    public String getCode() {
-        return code;
+    public String getCerradura() {
+        return cerradura;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCerradura(String cerradura) {
+        this.cerradura = cerradura;
     }
     
     public String getId() {
@@ -82,29 +72,12 @@ public class RoomEntity implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
-
-    public List<String> getConsolidatedData() {
-        return consolidatedData;
-    }
-
-    public void setConsolidatedData(List<String> consolidatedData) {
-        this.consolidatedData = consolidatedData;
-    }
-
-    public List<String> getSensors() {
-        return sensors;
-    }
-
-    public void setSensors(List<String> sensors) {
-        this.sensors = sensors;
-    }
-    
     
 }

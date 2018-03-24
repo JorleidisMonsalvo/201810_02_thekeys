@@ -24,11 +24,10 @@
 package co.edu.uniandes.isis2503.nosqljpa.service;
 
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IFloorLogic;
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IRoomLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.FloorLogic;
-import co.edu.uniandes.isis2503.nosqljpa.logic.RoomLogic;
+import co.edu.uniandes.isis2503.nosqljpa.logic.InmuebleLogic;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.FloorDTO;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.RoomDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO;
 import com.sun.istack.logging.Logger;
 import java.util.List;
 import java.util.logging.Level;
@@ -41,6 +40,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
 
 /**
  *
@@ -51,11 +51,11 @@ import javax.ws.rs.core.Response;
 public class FloorService {
 
     private final IFloorLogic floorLogic;
-    private final IRoomLogic roomLogic;
+    private final IInmuebleLogic roomLogic;
 
     public FloorService() {
         this.floorLogic = new FloorLogic();
-        this.roomLogic = new RoomLogic();
+        this.roomLogic = new InmuebleLogic();
     }
 
     @POST
@@ -65,9 +65,9 @@ public class FloorService {
 
     @POST
     @Path("{code}/rooms")
-    public RoomDTO addRoom(@PathParam("code") String code, RoomDTO dto) {
+    public InmuebleDTO addRoom(@PathParam("code") String code, InmuebleDTO dto) {
         FloorDTO floor = floorLogic.findCode(code);
-        RoomDTO result = roomLogic.add(dto);
+        InmuebleDTO result = roomLogic.add(dto);
         floor.addRoom(dto.getId());
         floorLogic.update(floor);
         return result;

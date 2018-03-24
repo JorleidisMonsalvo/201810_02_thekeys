@@ -23,46 +23,46 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.logic;
 
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IRoomLogic;
-import static co.edu.uniandes.isis2503.nosqljpa.model.dto.converter.RoomConverter.CONVERTER;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.RoomDTO;
-import co.edu.uniandes.isis2503.nosqljpa.persistence.RoomPersistence;
+import static co.edu.uniandes.isis2503.nosqljpa.model.dto.converter.InmuebleConverter.CONVERTER;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO;
+import co.edu.uniandes.isis2503.nosqljpa.persistence.InmueblePersistence;
 import java.util.List;
 import java.util.UUID;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
 
 /**
  *
  * @author ca.mendoza968
  */
-public class RoomLogic implements IRoomLogic {
-    private final RoomPersistence persistence;
+public class InmuebleLogic implements IInmuebleLogic {
+    private final InmueblePersistence persistence;
 
-    public RoomLogic() {
-        this.persistence = new RoomPersistence();
+    public InmuebleLogic() {
+        this.persistence = new InmueblePersistence();
     }
 
     @Override
-    public RoomDTO add(RoomDTO dto) {
+    public InmuebleDTO add(InmuebleDTO dto) {
          if(dto.getId()==null){
             dto.setId(UUID.randomUUID().toString());
          }
-        RoomDTO result = CONVERTER.entityToDto(persistence.add(CONVERTER.dtoToEntity(dto)));
+        InmuebleDTO result = CONVERTER.entityToDto(persistence.add(CONVERTER.dtoToEntity(dto)));
         return result;
     }
 
     @Override
-    public RoomDTO update(RoomDTO dto) {
-        RoomDTO result = CONVERTER.entityToDto(persistence.update(CONVERTER.dtoToEntity(dto)));
+    public InmuebleDTO update(InmuebleDTO dto) {
+        InmuebleDTO result = CONVERTER.entityToDto(persistence.update(CONVERTER.dtoToEntity(dto)));
         return result;
     }
 
     @Override
-    public RoomDTO find(String id) {
+    public InmuebleDTO find(String id) {
         return CONVERTER.entityToDto(persistence.find(id));
     }
 
     @Override
-    public List<RoomDTO> all() {
+    public List<InmuebleDTO> all() {
         return CONVERTER.listEntitiesToListDTOs(persistence.all());
     }
 
@@ -72,7 +72,7 @@ public class RoomLogic implements IRoomLogic {
     }
 
     @Override
-    public RoomDTO findCode(String code) {
+    public InmuebleDTO findCode(String code) {
         return CONVERTER.entityToDto(persistence.findCode(code));
     }
 }
