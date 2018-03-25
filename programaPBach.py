@@ -10,12 +10,12 @@ for message in consumer:
     data={"tipo":elTipo}
     data_string = json.dumps(data)
     directorio = message.topic.split('.')
-    ubicacion=directorio[1]+directorio[3]
+    ubicacion=directorio[3]
 #	json_data = json.loads(message.value.decode('utf-8'))
 #	sensetime = json_data['dataValue']
     print(message.value.decode('utf-8'))
     print(message.topic)
-    url = "http://172.24.42.79:8080/"+ubicacion+"alarmas"
+    url = "http://172.24.42.79:8080/inmuebles/"+ubicacion+"/alarmas"
     print(url)
     response = requests.post(url,data_string,headers={'Content-type': 'application/json'})
     print("Response Status Code: " + str(response.status_code))
