@@ -39,17 +39,28 @@ public class InmuebleDTO {
     private String direccion;
     private String cerradura;
     private List<String> alarmas;
+    private String hub;
     
     public InmuebleDTO() {
         this.alarmas= new ArrayList<>();
     }
 
-    public InmuebleDTO(String id, String direccion, String cerradura, List<String> alarmas) {
+    public InmuebleDTO(String id, String direccion, String cerradura, List<String> alarmas, String hub) {
         this.id = id;
         this.direccion = direccion;
         this.cerradura = cerradura;
         this.alarmas = alarmas;
+        this.hub = hub;
     }
+
+    public String getHub() {
+        return hub;
+    }
+
+    public void setHub(String hub) {
+        this.hub = hub;
+    }
+    
 
     public List<String> getAlarmas() {
         return alarmas;

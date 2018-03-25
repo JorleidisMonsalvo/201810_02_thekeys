@@ -21,41 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
+package co.edu.uniandes.isis2503.nosqljpa.interfaces;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.entity.HubEntity;
+import java.util.List;
 
 /**
  *
  * @author ca.mendoza968
  */
-@XmlRootElement
-public class MeasurementDTO {
-    private String id;    
-    private String name;    
-    private String unit;
+public interface IHubConverter {
+    public HubDTO entityToDto(HubEntity entity);
 
-    public String getId() {
-        return id;
-    }
+    public HubEntity dtoToEntity(HubDTO dto);
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public List<HubDTO> listEntitiesToListDTOs(List<HubEntity> entities);
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
+    public List<HubEntity> listDTOsToListEntities(List<HubDTO> dtos);
 }

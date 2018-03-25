@@ -23,20 +23,17 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.interfaces;
 
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.MeasurementDTO;
-import co.edu.uniandes.isis2503.nosqljpa.model.entity.MeasurementEntity;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
 import java.util.List;
 
 /**
  *
  * @author ca.mendoza968
  */
-public interface IMeasurementConverter {
-    public MeasurementDTO entityToDto(MeasurementEntity entity);
-
-    public MeasurementEntity dtoToEntity(MeasurementDTO dto);
-
-    public List<MeasurementDTO> listEntitiesToListDTOs(List<MeasurementEntity> entities);
-
-    public List<MeasurementEntity> listDTOsToListEntities(List<MeasurementDTO> dtos);
+public interface IHubLogic {
+    public HubDTO add(HubDTO dto);
+    public HubDTO update(HubDTO dto);
+    public HubDTO find(String id);
+    public List<HubDTO> all();
+    public Boolean delete(String id);
 }

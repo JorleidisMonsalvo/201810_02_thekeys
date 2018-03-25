@@ -21,19 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.interfaces;
+package co.edu.uniandes.isis2503.nosqljpa.persistence;
 
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.MeasurementDTO;
-import java.util.List;
+import co.edu.uniandes.isis2503.nosqljpa.model.entity.HubEntity;
 
 /**
  *
  * @author ca.mendoza968
  */
-public interface IMeasurementLogic {
-    public MeasurementDTO add(MeasurementDTO dto);
-    public MeasurementDTO update(MeasurementDTO dto);
-    public MeasurementDTO find(String id);
-    public List<MeasurementDTO> all();
-    public Boolean delete(String id);
+public class HubPersistence extends Persistencer<HubEntity, String>{
+
+    public HubPersistence(){
+        this.entityClass = HubEntity.class;
+    }
+
 }

@@ -23,47 +23,47 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.logic;
 
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IMeasurementLogic;
-import static co.edu.uniandes.isis2503.nosqljpa.model.dto.converter.MeasurementConverter.CONVERTER;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.MeasurementDTO;
-import co.edu.uniandes.isis2503.nosqljpa.persistence.MeasurementPersistence;
+import static co.edu.uniandes.isis2503.nosqljpa.model.dto.converter.HubConverter.CONVERTER;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
+import co.edu.uniandes.isis2503.nosqljpa.persistence.HubPersistence;
 import java.util.List;
 import java.util.UUID;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubLogic;
 
 /**
  *
  * @author ca.mendoza968
  */
-public class MeasurementLogic implements IMeasurementLogic {
+public class HubLogic implements IHubLogic {
 
-    private final MeasurementPersistence persistence;
+    private final HubPersistence persistence;
 
-    public MeasurementLogic() {
-        this.persistence = new MeasurementPersistence();
+    public HubLogic() {
+        this.persistence = new HubPersistence();
     }
 
     @Override
-    public MeasurementDTO add(MeasurementDTO dto) {
+    public HubDTO add(HubDTO dto) {
         if (dto.getId() == null) {
             dto.setId(UUID.randomUUID().toString());
         }
-        MeasurementDTO result = CONVERTER.entityToDto(persistence.add(CONVERTER.dtoToEntity(dto)));
+        HubDTO result = CONVERTER.entityToDto(persistence.add(CONVERTER.dtoToEntity(dto)));
         return result;
     }
 
     @Override
-    public MeasurementDTO update(MeasurementDTO dto) {
-        MeasurementDTO result = CONVERTER.entityToDto(persistence.update(CONVERTER.dtoToEntity(dto)));
+    public HubDTO update(HubDTO dto) {
+        HubDTO result = CONVERTER.entityToDto(persistence.update(CONVERTER.dtoToEntity(dto)));
         return result;
     }
 
     @Override
-    public MeasurementDTO find(String id) {
+    public HubDTO find(String id) {
         return CONVERTER.entityToDto(persistence.find(id));
     }
 
     @Override
-    public List<MeasurementDTO> all() {
+    public List<HubDTO> all() {
         return CONVERTER.listEntitiesToListDTOs(persistence.all());
     }
 

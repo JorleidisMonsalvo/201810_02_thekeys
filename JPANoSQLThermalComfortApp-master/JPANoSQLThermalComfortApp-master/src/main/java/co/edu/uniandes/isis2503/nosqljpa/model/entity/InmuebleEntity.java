@@ -48,6 +48,16 @@ public class InmuebleEntity implements Serializable {
     
     private String cerradura;
     
+    private String hub;
+
+    public InmuebleEntity(String id, String direccion, String cerradura, String hub, List<String> alarmas) {
+        this.id = id;
+        this.direccion = direccion;
+        this.cerradura = cerradura;
+        this.hub = hub;
+        this.alarmas = alarmas;
+    }
+    
     @ElementCollection
     private List<String> alarmas;
 
@@ -61,13 +71,6 @@ public class InmuebleEntity implements Serializable {
 
     public InmuebleEntity() {
         this.alarmas=new ArrayList<>();
-    }
-
-    public InmuebleEntity(String id, String direccion, String cerradura, List<String> alarmas) {
-        this.id = id;
-        this.direccion = direccion;
-        this.cerradura = cerradura;
-        this.alarmas= alarmas;
     }
 
     public String getCerradura() {
@@ -92,6 +95,14 @@ public class InmuebleEntity implements Serializable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getHub() {
+        return hub;
+    }
+
+    public void setHub(String hub) {
+        this.hub = hub;
     }
     
 }

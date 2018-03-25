@@ -49,6 +49,7 @@ public class InmuebleConverter implements IInmuebleConverter {
         dto.setDireccion(entity.getDireccion());
         dto.setCerradura(entity.getCerradura());
         dto.setAlarmas(entity.getAlarmas());
+        dto.setHub(entity.getHub());
         return dto;
     }
 
@@ -59,6 +60,7 @@ public class InmuebleConverter implements IInmuebleConverter {
         entity.setDireccion(dto.getDireccion());
         entity.setCerradura(dto.getCerradura());
         entity.setAlarmas(dto.getAlarmas());
+        entity.setHub(dto.getHub());
         return entity;
     }
 

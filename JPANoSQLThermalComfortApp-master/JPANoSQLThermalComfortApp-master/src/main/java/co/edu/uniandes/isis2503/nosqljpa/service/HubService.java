@@ -23,13 +23,13 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.service;
 
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IConsolidatedDataLogic;
-import co.edu.uniandes.isis2503.nosqljpa.logic.InmuebleLogic;
-import co.edu.uniandes.isis2503.nosqljpa.logic.ConsolidatedDataLogic;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IRealTimeDataLogic;
+import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.AlarmaLogic;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConsolidatedDataDTO;
+import co.edu.uniandes.isis2503.nosqljpa.logic.RealTimeDataLogic;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.RealTimeDataDTO;
 import com.sun.istack.logging.Logger;
 import java.util.List;
 import java.util.logging.Level;
@@ -42,75 +42,50 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubLogic;
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
-import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
 
 /**
  *
  * @author ca.mendoza968
  */
-@Path("/inmuebles")
+@Path("/hubs")
 @Produces(MediaType.APPLICATION_JSON)
-public class InmuebleService {
-    private final IInmuebleLogic inmuebleLogic;
-    private final IAlarmaLogic alarmaLogic;
+public class HubService {
     private final IHubLogic hubLogic;
 
-    public InmuebleService() {
-        this.inmuebleLogic = new InmuebleLogic();
-        this.alarmaLogic = new AlarmaLogic();
+    public HubService() {
         this.hubLogic = new HubLogic();
     }
 
     @POST
-    public InmuebleDTO add(InmuebleDTO2 dto){
-        for(AlarmaDTO a:dto.getAlarmas()){
-            alarmaLogic.add(a);
-        }
-        if(dto.getHub()!=null){
-            hubLogic.add(dto.getHub());
-        }
-        return inmuebleLogic.add(dto.convert());
-    }
-    
-    
-    @POST
-    @Path("{id}/alarmas")
-    public AlarmaDTO addAlarma(@PathParam("id") String id, AlarmaDTO dto) {
-        InmuebleDTO inmueble = inmuebleLogic.find(id);
-        AlarmaDTO result = alarmaLogic.add(dto);
-        inmueble.addAlarma(dto.getId());
-        update(inmueble);
-        return result;
+    public HubDTO add(HubDTO dto) {
+        return hubLogic.add(dto);
     }
 
     @PUT
-    public InmuebleDTO update(InmuebleDTO dto) {
-        return inmuebleLogic.update(dto);
+    public HubDTO update(HubDTO dto) {
+        return hubLogic.update(dto);
     }
 
     @GET
     @Path("/{id}")
-    public InmuebleDTO find(@PathParam("id") String id) {
-        return inmuebleLogic.find(id);
+    public HubDTO find(@PathParam("id") String id) {
+        return hubLogic.find(id);
     }
 
     @GET
-    public List<InmuebleDTO> all() {
-        return inmuebleLogic.all();
+    public List<HubDTO> all() {
+        return hubLogic.all();
     }
 
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") String id) {
         try {
-            inmuebleLogic.delete(id);
-            return Response.status(200).header("Access-Control-Allow-Origin", "*").entity("Sucessful: Room was deleted").build();
+            hubLogic.delete(id);
+            return Response.status(200).header("Access-Control-Allow-Origin", "*").entity("Sucessful: Sensor was deleted").build();
         } catch (Exception e) {
-            Logger.getLogger(InmuebleService.class).log(Level.WARNING, e.getMessage());
+            Logger.getLogger(AlarmaService.class).log(Level.WARNING, e.getMessage());
             return Response.status(500).header("Access-Control-Allow-Origin", "*").entity("We found errors in your query, please contact the Web Admin.").build();
         }
     }    

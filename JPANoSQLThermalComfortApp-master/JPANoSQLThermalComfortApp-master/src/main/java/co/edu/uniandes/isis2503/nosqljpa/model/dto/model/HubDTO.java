@@ -21,28 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.model.entity;
+package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import org.hibernate.annotations.DynamicUpdate;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author ca.mendoza968
  */
-
-@Entity
-@Table(name = "MEASUREMENT")
-public class MeasurementEntity implements Serializable {
-    @Id
-    private String id;
+@XmlRootElement
+public class HubDTO {
+    private String id;    
     
-    private String name;
+    private String correoPropietario;
     
-    private String unit;
+    private String documentoPropietario;
+    
+    public HubDTO(){
+    }
+    
+    public HubDTO(String id, String correoPropietario, String documentoPropietario) {
+        this.id = id;
+        this.correoPropietario = correoPropietario;
+        this.documentoPropietario = documentoPropietario;
+    }
 
     public String getId() {
         return id;
@@ -52,20 +54,21 @@ public class MeasurementEntity implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCorreoPropietario() {
+        return this.correoPropietario;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCorreoPropietario(String correoPropietario) {
+        this.correoPropietario = correoPropietario;
     }
 
-    public String getUnit() {
-        return unit;
+    public String getDocumentoPropietario() {
+        return this.documentoPropietario;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setDocumentoPropietario(String doc) {
+        this.documentoPropietario = doc;
     }
+
     
 }

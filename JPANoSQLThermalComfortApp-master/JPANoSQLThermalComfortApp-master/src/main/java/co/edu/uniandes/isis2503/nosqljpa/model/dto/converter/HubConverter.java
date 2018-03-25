@@ -23,54 +23,54 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.model.dto.converter;
 
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IMeasurementConverter;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.MeasurementDTO;
-import co.edu.uniandes.isis2503.nosqljpa.model.entity.MeasurementEntity;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.entity.HubEntity;
 import java.util.ArrayList;
 import java.util.List;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubConverter;
 
 /**
  *
  * @author ca.mendoza968
  */
-public class MeasurementConverter implements IMeasurementConverter {
+public class HubConverter implements IHubConverter {
 
-    public static IMeasurementConverter CONVERTER = new MeasurementConverter();
+    public static IHubConverter CONVERTER = new HubConverter();
 
-    public MeasurementConverter() {
+    public HubConverter() {
     }
 
     @Override
-    public MeasurementDTO entityToDto(MeasurementEntity entity) {
-        MeasurementDTO dto = new MeasurementDTO();
+    public HubDTO entityToDto(HubEntity entity) {
+        HubDTO dto = new HubDTO();
         dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        dto.setUnit(entity.getUnit());
+        dto.setCorreoPropietario(entity.getCorreoPropietario());
+        dto.setDocumentoPropietario(entity.getDocumentoPropietario());
         return dto;
     }
 
     @Override
-    public MeasurementEntity dtoToEntity(MeasurementDTO dto) {
-        MeasurementEntity entity = new MeasurementEntity();
+    public HubEntity dtoToEntity(HubDTO dto) {
+        HubEntity entity = new HubEntity();
         entity.setId(dto.getId());
-        entity.setName(dto.getName());
-        entity.setUnit(dto.getUnit());
+        entity.setCorreoPropietario(dto.getCorreoPropietario());
+        entity.setDocumentoPropietario(dto.getDocumentoPropietario());
         return entity;
     }
 
     @Override
-    public List<MeasurementDTO> listEntitiesToListDTOs(List<MeasurementEntity> entities) {
-        ArrayList<MeasurementDTO> dtos = new ArrayList<>();
-        for (MeasurementEntity entity : entities) {
+    public List<HubDTO> listEntitiesToListDTOs(List<HubEntity> entities) {
+        ArrayList<HubDTO> dtos = new ArrayList<>();
+        for (HubEntity entity : entities) {
             dtos.add(entityToDto(entity));
         }
         return dtos;
     }
 
     @Override
-    public List<MeasurementEntity> listDTOsToListEntities(List<MeasurementDTO> dtos) {
-        ArrayList<MeasurementEntity> entities = new ArrayList<>();
-        for (MeasurementDTO dto : dtos) {
+    public List<HubEntity> listDTOsToListEntities(List<HubDTO> dtos) {
+        ArrayList<HubEntity> entities = new ArrayList<>();
+        for (HubDTO dto : dtos) {
             entities.add(dtoToEntity(dto));
         }
         return entities;

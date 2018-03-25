@@ -43,7 +43,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IConjuntoLogic;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.AlarmaLogic;
+import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConjuntoDTO2;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
@@ -59,11 +61,13 @@ public class ConjuntoService {
     private final IConjuntoLogic conjuntoLogic;
     private final IInmuebleLogic inmuebleLogic;
     private final IAlarmaLogic alarmaLogic;
+    private final IHubLogic hubLogic;
 
     public ConjuntoService() {
         this.conjuntoLogic = new ConjuntoLogic();
         this.inmuebleLogic = new InmuebleLogic();
         this.alarmaLogic = new AlarmaLogic();
+        this.hubLogic = new HubLogic();
     }
 
     @POST
@@ -71,6 +75,9 @@ public class ConjuntoService {
         for(InmuebleDTO2 i: dto.getInmuebles()){
             for(AlarmaDTO a: i.getAlarmas()){
                  alarmaLogic.add(a);
+            }
+            if(i.getHub()!=null){
+                hubLogic.add(i.getHub());
             }
             inmuebleLogic.add(i.convert());
         }

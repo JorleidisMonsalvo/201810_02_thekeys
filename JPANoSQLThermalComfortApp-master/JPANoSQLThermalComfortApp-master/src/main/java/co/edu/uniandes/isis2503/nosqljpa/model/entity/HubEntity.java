@@ -21,18 +21,60 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.persistence;
+package co.edu.uniandes.isis2503.nosqljpa.model.entity;
 
-import co.edu.uniandes.isis2503.nosqljpa.model.entity.MeasurementEntity;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import org.hibernate.annotations.DynamicUpdate;
 
 /**
  *
  * @author ca.mendoza968
  */
-public class MeasurementPersistence extends Persistencer<MeasurementEntity, String>{
 
-    public MeasurementPersistence(){
-        this.entityClass = MeasurementEntity.class;
+@Entity
+@Table(name = "MEASUREMENT")
+public class HubEntity implements Serializable {
+    @Id
+    private String id;
+    
+    private String correoPropietario;
+    
+    private String documentoPropietario;
+    
+    public HubEntity(){
+        
     }
 
+    public HubEntity(String id,String correo,String doc){
+        this.id=id;
+        this.correoPropietario=correo;
+        this.documentoPropietario=doc;
+    }    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCorreoPropietario() {
+        return correoPropietario;
+    }
+
+    public void setCorreoPropietario(String correoPropietario) {
+        this.correoPropietario = correoPropietario;
+    }
+
+    public String getDocumentoPropietario() {
+        return documentoPropietario;
+    }
+
+    public void setDocumentoPropietario(String documentoPropietario) {
+        this.documentoPropietario = documentoPropietario;
+    }
+    
 }

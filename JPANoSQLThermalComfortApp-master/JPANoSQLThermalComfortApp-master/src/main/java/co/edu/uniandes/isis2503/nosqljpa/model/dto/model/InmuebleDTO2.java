@@ -39,17 +39,29 @@ public class InmuebleDTO2 {
     private String direccion;
     private String cerradura;
     private List<AlarmaDTO> alarmas;
+    private HubDTO hub;
     
     public InmuebleDTO2() {
         this.alarmas= new ArrayList<>();
     }
 
-    public InmuebleDTO2(String id, String direccion, String cerradura, List<AlarmaDTO> alarmas) {
+    public InmuebleDTO2(String id, String direccion, String cerradura, List<AlarmaDTO> alarmas, HubDTO hub) {
         this.id = id;
         this.direccion = direccion;
         this.cerradura = cerradura;
         this.alarmas = alarmas;
+        this.hub = hub;
     }
+
+    public HubDTO getHub() {
+        return hub;
+    }
+
+    public void setHub(HubDTO hub) {
+        this.hub = hub;
+    }
+
+    
 
     public List<AlarmaDTO> getAlarmas() {
         return alarmas;
@@ -94,6 +106,9 @@ public class InmuebleDTO2 {
         i.setId(this.id);
         for(AlarmaDTO a:this.alarmas){
             i.addAlarma(a.getId());
+        }
+        if(this.hub!=null){
+            i.setHub(this.hub.getId());
         }
         return i;
     }
