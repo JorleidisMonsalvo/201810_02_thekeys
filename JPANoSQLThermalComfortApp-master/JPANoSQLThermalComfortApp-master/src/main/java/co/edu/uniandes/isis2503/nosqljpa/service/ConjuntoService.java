@@ -23,6 +23,8 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.service;
 
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaConverter;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.ConjuntoLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.InmuebleLogic;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConjuntoDTO;
@@ -41,6 +43,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IConjuntoLogic;
+import co.edu.uniandes.isis2503.nosqljpa.logic.AlarmaLogic;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConjuntoDTO2;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
 
 /**
  *
@@ -51,23 +57,31 @@ import co.edu.uniandes.isis2503.nosqljpa.interfaces.IConjuntoLogic;
 public class ConjuntoService {
 
     private final IConjuntoLogic conjuntoLogic;
-    private final IInmuebleLogic roomLogic;
+    private final IInmuebleLogic inmuebleLogic;
+    private final IAlarmaLogic alarmaLogic;
 
     public ConjuntoService() {
         this.conjuntoLogic = new ConjuntoLogic();
-        this.roomLogic = new InmuebleLogic();
+        this.inmuebleLogic = new InmuebleLogic();
+        this.alarmaLogic = new AlarmaLogic();
     }
 
     @POST
-    public ConjuntoDTO add(ConjuntoDTO dto) {
-        return conjuntoLogic.add(dto);
+    public ConjuntoDTO add(ConjuntoDTO2 dto) {
+        for(InmuebleDTO2 i: dto.getInmuebles()){
+            for(AlarmaDTO a: i.getAlarmas()){
+                 alarmaLogic.add(a);
+            }
+            inmuebleLogic.add(i.convert());
+        }
+        return conjuntoLogic.add(dto.convert());
     }
 
     @POST
     @Path("{code}/rooms")
     public InmuebleDTO addRoom(@PathParam("code") String code, InmuebleDTO dto) {
         ConjuntoDTO floor = conjuntoLogic.findCode(code);
-        InmuebleDTO result = roomLogic.add(dto);
+        InmuebleDTO result = inmuebleLogic.add(dto);
 //        floor.addRoom(dto.getId());
         conjuntoLogic.update(floor);
         return result;

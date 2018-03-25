@@ -46,7 +46,7 @@ public class ConjuntoConverter implements IConjuntoConverter {
         dto.setId(entity.getId());
         dto.setNombre(entity.getDireccion());
         dto.setDireccion(entity.getNombre());
-//        dto.setRooms(entity.getRooms());
+        dto.setInmuebles(entity.getInmuebles());
         return dto;
     }
 
@@ -56,7 +56,7 @@ public class ConjuntoConverter implements IConjuntoConverter {
         entity.setId(dto.getId());
         entity.setDireccion(dto.getNombre());
         entity.setNombre(dto.getDireccion());
-//        entity.setRooms(dto.getRooms());
+        entity.setInmuebles(dto.getInmuebles());
         return entity;
     }
 

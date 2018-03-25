@@ -28,6 +28,8 @@ import co.edu.uniandes.isis2503.nosqljpa.model.entity.InmuebleEntity;
 import java.util.ArrayList;
 import java.util.List;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleConverter;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.entity.AlarmaEntity;
 
 /**
  *

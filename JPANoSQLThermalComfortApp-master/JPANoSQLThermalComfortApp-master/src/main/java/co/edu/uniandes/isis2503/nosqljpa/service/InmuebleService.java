@@ -44,6 +44,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
 
 /**
  *
@@ -61,8 +62,11 @@ public class InmuebleService {
     }
 
     @POST
-    public InmuebleDTO add(InmuebleDTO dto) {
-        return inmuebleLogic.add(dto);
+    public InmuebleDTO add(InmuebleDTO2 dto){
+        for(AlarmaDTO a:dto.getAlarmas()){
+            alarmaLogic.add(a);
+        }
+        return inmuebleLogic.add(dto.convert());
     }
     
     
@@ -72,7 +76,7 @@ public class InmuebleService {
         InmuebleDTO inmueble = inmuebleLogic.find(id);
         AlarmaDTO result = alarmaLogic.add(dto);
         inmueble.addAlarma(dto.getId());
-        inmuebleLogic.update(inmueble);
+        update(inmueble);
         return result;
     }
 

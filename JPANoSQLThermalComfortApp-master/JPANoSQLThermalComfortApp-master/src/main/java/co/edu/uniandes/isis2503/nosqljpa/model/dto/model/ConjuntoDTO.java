@@ -36,17 +36,25 @@ public class ConjuntoDTO {
     private String id;
     private String nombre;
     private String direccion;
-//    private List<String> rooms;
+    private List<String> inmuebles;
 
-    public ConjuntoDTO() {
-//        this.rooms = new ArrayList();
+    public List<String> getInmuebles() {
+        return inmuebles;
     }
 
-    public ConjuntoDTO(String id, String name, String direccion) {
+    public void setInmuebles(List<String> inmuebles) {
+        this.inmuebles = inmuebles;
+    }
+
+    public ConjuntoDTO() {
+        this.inmuebles = new ArrayList();
+    }
+
+    public ConjuntoDTO(String id, String name, String direccion,List<String> inmuebles) {
         this.id = id;
         this.nombre = name;
         this.direccion = direccion;
-//        this.rooms = rooms;
+        this.inmuebles = inmuebles;
     }
 
     public String getDireccion() {
@@ -71,6 +79,10 @@ public class ConjuntoDTO {
 
     public void setId(String id) {
         this.id = id;
+    }
+    
+    public void addInmueble(String i){
+        this.inmuebles.add(i);
     }
 
 }

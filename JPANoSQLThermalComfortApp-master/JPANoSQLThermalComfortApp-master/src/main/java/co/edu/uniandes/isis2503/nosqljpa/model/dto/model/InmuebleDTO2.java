@@ -21,68 +21,50 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.model.entity;
+package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import org.hibernate.annotations.DynamicUpdate;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author ca.mendoza968
  */
-@Entity
-@Table(name = "FLOOR")
-public class ConjuntoEntity implements Serializable {
-
-    @Id
+@XmlRootElement
+public class InmuebleDTO2 {
+     @Id
     private String id;
-    
     private String direccion;
+    private String cerradura;
+    private List<AlarmaDTO> alarmas;
     
-    private String nombre;
-
-    @ElementCollection
-    private List<String> inmuebles;
-
-    public ConjuntoEntity() {
-        this.inmuebles = new ArrayList();
+    public InmuebleDTO2() {
+        this.alarmas= new ArrayList<>();
     }
 
-    public ConjuntoEntity(String id, String direccion, String nombre,List<String> inmuebles) {
+    public InmuebleDTO2(String id, String direccion, String cerradura, List<AlarmaDTO> alarmas) {
         this.id = id;
         this.direccion = direccion;
-        this.nombre = nombre;
-        this.inmuebles = inmuebles;
+        this.cerradura = cerradura;
+        this.alarmas = alarmas;
     }
 
-    public List<String> getInmuebles() {
-        return inmuebles;
+    public List<AlarmaDTO> getAlarmas() {
+        return alarmas;
     }
 
-    public void setInmuebles(List<String> inmuebles) {
-        this.inmuebles = inmuebles;
+    public void setAlarmas(List<AlarmaDTO> alarmas) {
+        this.alarmas = alarmas;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getCerradura() {
+        return cerradura;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setCerradura(String cerradura) {
+        this.cerradura = cerradura;
     }
 
     public String getId() {
@@ -93,4 +75,26 @@ public class ConjuntoEntity implements Serializable {
         this.id = id;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void addAlarma(AlarmaDTO alarma){
+        this.alarmas.add(alarma);
+    }
+    
+    public InmuebleDTO convert(){
+        InmuebleDTO i =new InmuebleDTO();
+        i.setCerradura(this.cerradura);
+        i.setDireccion(this.direccion);
+        i.setId(this.id);
+        for(AlarmaDTO a:this.alarmas){
+            i.addAlarma(a.getId());
+        }
+        return i;
+    }
 }

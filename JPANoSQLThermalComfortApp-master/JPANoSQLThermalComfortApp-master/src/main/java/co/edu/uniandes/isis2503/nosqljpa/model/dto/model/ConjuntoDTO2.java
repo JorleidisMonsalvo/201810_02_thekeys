@@ -21,52 +21,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.model.entity;
+package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import org.hibernate.annotations.DynamicUpdate;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author ca.mendoza968
  */
-@Entity
-@Table(name = "FLOOR")
-public class ConjuntoEntity implements Serializable {
-
-    @Id
+@XmlRootElement
+public class ConjuntoDTO2 {
     private String id;
-    
-    private String direccion;
-    
     private String nombre;
+    private String direccion;
+    private List<InmuebleDTO2> inmuebles;
 
-    @ElementCollection
-    private List<String> inmuebles;
-
-    public ConjuntoEntity() {
-        this.inmuebles = new ArrayList();
-    }
-
-    public ConjuntoEntity(String id, String direccion, String nombre,List<String> inmuebles) {
-        this.id = id;
-        this.direccion = direccion;
-        this.nombre = nombre;
-        this.inmuebles = inmuebles;
-    }
-
-    public List<String> getInmuebles() {
+    public List<InmuebleDTO2> getInmuebles() {
         return inmuebles;
     }
 
-    public void setInmuebles(List<String> inmuebles) {
+    public void setInmuebles(List<InmuebleDTO2> inmuebles) {
         this.inmuebles = inmuebles;
+    }
+
+    public ConjuntoDTO2() {
+        this.inmuebles = new ArrayList();
+    }
+
+    public ConjuntoDTO2(String id, String name, String direccion,List<InmuebleDTO2> inmuebles) {
+        this.id = id;
+        this.nombre = name;
+        this.direccion = direccion;
+        this.inmuebles = inmuebles;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getNombre() {
@@ -77,20 +73,24 @@ public class ConjuntoEntity implements Serializable {
         this.nombre = nombre;
     }
     
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+    
+    public ConjuntoDTO convert(){
+        ConjuntoDTO c= new ConjuntoDTO();
+        c.setId(this.id);
+        c.setDireccion(this.direccion);
+        c.setNombre(this.nombre);
+        c.setInmuebles(new ArrayList<String>());
+        for(InmuebleDTO2 i:this.inmuebles){
+            c.addInmueble(i.getId());
+        }
+        return c;
     }
 
 }

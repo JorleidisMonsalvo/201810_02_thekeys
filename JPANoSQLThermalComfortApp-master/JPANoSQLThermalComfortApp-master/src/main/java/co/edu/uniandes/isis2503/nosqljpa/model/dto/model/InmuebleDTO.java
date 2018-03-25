@@ -83,7 +83,7 @@ public class InmuebleDTO {
         this.direccion = direccion;
     }
 
-    public void addAlarma(String idAlarma){
-        this.alarmas.add(id);
+    public void addAlarma(String alarma){
+        this.alarmas.add(alarma);
     }
 }

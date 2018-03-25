@@ -27,6 +27,7 @@ co\edu\uniandes\isis2503\nosqljpa\persistence\ConjuntoPersistence.class
 co\edu\uniandes\isis2503\nosqljpa\logic\ConsolidatedDataLogic.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IInmuebleLogic.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\model\ConsolidatedDataDTO.class
+co\edu\uniandes\isis2503\nosqljpa\model\dto\model\InmuebleDTO2.class
 co\edu\uniandes\isis2503\nosqljpa\logic\AlarmaLogic.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IConsolidatedDataLogic.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IMeasurementConverter.class
@@ -46,3 +47,4 @@ co\edu\uniandes\isis2503\nosqljpa\service\AlarmaService.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IInmuebleConverter.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\converter\ConjuntoConverter.class
 co\edu\uniandes\isis2503\nosqljpa\model\entity\AlarmaEntity.class
+co\edu\uniandes\isis2503\nosqljpa\model\dto\model\ConjuntoDTO2.class
