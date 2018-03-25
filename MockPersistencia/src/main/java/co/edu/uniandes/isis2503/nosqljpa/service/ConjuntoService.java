@@ -49,6 +49,7 @@ import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConjuntoDTO2;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
+import java.util.ArrayList;
 
 /**
  *
@@ -83,14 +84,14 @@ public class ConjuntoService {
         }
         return conjuntoLogic.add(dto.convert());
     }
-
+    
     @POST
-    @Path("{code}/rooms")
-    public InmuebleDTO addRoom(@PathParam("code") String code, InmuebleDTO dto) {
-        ConjuntoDTO floor = conjuntoLogic.findCode(code);
+    @Path("{id}/inmuebles")
+    public InmuebleDTO addInmueble(@PathParam("id") String id, InmuebleDTO dto) {
+        ConjuntoDTO conjunto = conjuntoLogic.find(id);
         InmuebleDTO result = inmuebleLogic.add(dto);
-//        floor.addRoom(dto.getId());
-        conjuntoLogic.update(floor);
+        conjunto.addInmueble(dto.getId());
+        conjuntoLogic.update(conjunto);
         return result;
     }
 
@@ -103,6 +104,21 @@ public class ConjuntoService {
     @Path("/{id}")
     public ConjuntoDTO find(@PathParam("id") String id) {
         return conjuntoLogic.find(id);
+    }
+    
+    @GET
+    @Path("/{id}/inmuebles")
+    public List<InmuebleDTO> findInmuebles(@PathParam("id") String id) {
+        ConjuntoDTO conjunto;
+        List<InmuebleDTO> inmuebles=new ArrayList<>();
+        try{
+        conjunto=conjuntoLogic.find(id);
+        for(String i:conjunto.getInmuebles()){
+            inmuebles.add(inmuebleLogic.find(i));
+        }
+        }catch(Exception e){
+        }
+        return inmuebles;
     }
 
     @GET

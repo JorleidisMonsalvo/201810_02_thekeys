@@ -43,7 +43,9 @@ import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
+import java.util.ArrayList;
 
 /**
  *
@@ -84,6 +86,17 @@ public class InmuebleService {
         update(inmueble);
         return result;
     }
+    
+    
+    @POST
+    @Path("{id}/hub")
+    public HubDTO addHub(@PathParam("id") String id, HubDTO dto) {
+        InmuebleDTO inmueble = inmuebleLogic.find(id);
+        HubDTO result = hubLogic.add(dto);
+        inmueble.setHub(dto.getId());
+        update(inmueble);
+        return result;
+    }
 
     @PUT
     public InmuebleDTO update(InmuebleDTO dto) {
@@ -95,10 +108,37 @@ public class InmuebleService {
     public InmuebleDTO find(@PathParam("id") String id) {
         return inmuebleLogic.find(id);
     }
+    
+    @GET
+    @Path("/{id}/hub")
+    public HubDTO findHub(@PathParam("id") String id) {
+        HubDTO h;
+        InmuebleDTO i= null;
+        try{
+            i=inmuebleLogic.find(id);
+            h=hubLogic.find(i.getHub());
+        }catch(Exception e){
+            h=null;
+        }
+        return h;
+    }
 
     @GET
     public List<InmuebleDTO> all() {
         return inmuebleLogic.all();
+    }
+    
+    @GET
+    @Path("/{id}/alarmas")
+    public List<AlarmaDTO> findAlarmas(@PathParam("id") String id) {
+        List<AlarmaDTO> alarmas=new ArrayList<>();
+        InmuebleDTO i=inmuebleLogic.find(id);
+        if(i!=null){
+            for(String a:i.getAlarmas()){
+                alarmas.add(alarmaLogic.find(a));
+            }
+        }
+        return alarmas;
     }
 
     @DELETE

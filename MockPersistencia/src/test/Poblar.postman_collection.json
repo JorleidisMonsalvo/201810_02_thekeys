@@ -1,0 +1,206 @@
+{
+	"id": "d9472cf9-3399-458c-9966-353f5cb87477",
+	"name": "Poblar",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"e4f1031b-7dbb-4b91-bc25-721f18f7aab9",
+		"d0e22738-9175-48dc-8402-51b480ee6c72",
+		"ef9649ba-0608-44be-b667-fbc97135f1ac",
+		"0cb10271-f05e-47ae-aee0-c58fc156a807",
+		"d8af37d3-0b87-4d4d-9012-218b598fd79f",
+		"ba354a2b-dd15-423e-815f-1ab7f0b51364",
+		"a1f087a9-36ca-4e27-86b3-31d1e2526327",
+		"12f5839f-1cd6-480a-8de5-efd84ce0c50a"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "0cb10271-f05e-47ae-aee0-c58fc156a807",
+			"name": "Poblar4",
+			"url": "http://localhost:8080/conjuntos",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\t\"id\":\"18\",\r\n\t\"nombre\":\"acacias\",\r\n\t\"direccion\":\"calle191\",\r\n\t\"inmuebles\":[\r\n\t\t{\r\n\t\t\t\"id\":\"20\",\r\n\t\t\t\"cerradura\": \"xb140\",\r\n\t\t\t\"direccion\": \"calle1-21\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"22\",\r\n\t\t\t\t\"correoPropietario\":\"23@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"24\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"25\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"26\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"27\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\r\n\t\t{\r\n\t\t\t\"id\":\"28\",\r\n\t\t\t\"cerradura\": \"qw312\",\r\n\t\t\t\"direccion\": \"calle1-29\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"30\",\r\n\t\t\t\t\"correoPropietario\":\"31@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"32\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"33\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"34\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"35\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\t\r\n\t\t}\r\n\t]\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "12f5839f-1cd6-480a-8de5-efd84ce0c50a",
+			"name": "Poblar8",
+			"url": "http://localhost:8080/conjuntos",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\t\"id\":\"88\",\r\n\t\"nombre\":\"acacias\",\r\n\t\"direccion\":\"calle89\",\r\n\t\"inmuebles\":[\r\n\t\t{\r\n\t\t\t\"id\":\"90\",\r\n\t\t\t\"cerradura\": \"xb140\",\r\n\t\t\t\"direccion\": \"calle1-91\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"92\",\r\n\t\t\t\t\"correoPropietario\":\"93@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"94\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"95\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"96\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"97\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\r\n\t\t{\r\n\t\t\t\"id\":\"98\",\r\n\t\t\t\"cerradura\": \"qw312\",\r\n\t\t\t\"direccion\": \"calle1-99\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"114\",\r\n\t\t\t\t\"correoPropietario\":\"100@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"101\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"12324\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"1234123\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"123413\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\t\r\n\t\t}\r\n\t]\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "a1f087a9-36ca-4e27-86b3-31d1e2526327",
+			"name": "Poblar7",
+			"url": "http://localhost:8080/conjuntos",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\t\"id\":\"72\",\r\n\t\"nombre\":\"acacias\",\r\n\t\"direccion\":\"calle73\",\r\n\t\"inmuebles\":[\r\n\t\t{\r\n\t\t\t\"id\":\"74\",\r\n\t\t\t\"cerradura\": \"xb140\",\r\n\t\t\t\"direccion\": \"calle1-75\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"\",\r\n\t\t\t\t\"correoPropietario\":\"76@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"77\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"78\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"79\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"80\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\r\n\t\t{\r\n\t\t\t\"id\":\"81\",\r\n\t\t\t\"cerradura\": \"qw312\",\r\n\t\t\t\"direccion\": \"calle1-82\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"\",\r\n\t\t\t\t\"correoPropietario\":\"83@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"84\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"85\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"86\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"87\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\t\r\n\t\t}\r\n\t]\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "ba354a2b-dd15-423e-815f-1ab7f0b51364",
+			"name": "Poblar6",
+			"url": "http://localhost:8080/conjuntos",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\t\"id\":\"54\",\r\n\t\"nombre\":\"acacias\",\r\n\t\"direccion\":\"calle55\",\r\n\t\"inmuebles\":[\r\n\t\t{\r\n\t\t\t\"id\":\"56\",\r\n\t\t\t\"cerradura\": \"xb140\",\r\n\t\t\t\"direccion\": \"calle1-57\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"58\",\r\n\t\t\t\t\"correoPropietario\":\"59@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"60\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"61\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"62\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"63\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\r\n\t\t{\r\n\t\t\t\"id\":\"64\",\r\n\t\t\t\"cerradura\": \"qw312\",\r\n\t\t\t\"direccion\": \"calle1-65\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"66\",\r\n\t\t\t\t\"correoPropietario\":\"67@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"68\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"69\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"70\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"71\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\t\r\n\t\t}\r\n\t]\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d0e22738-9175-48dc-8402-51b480ee6c72",
+			"name": "Poblar2",
+			"url": "http://localhost:8080/conjuntos",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\t\"id\":\"2\",\r\n\t\"nombre\":\"acacias\",\r\n\t\"direccion\":\"calle2\",\r\n\t\"inmuebles\":[\r\n\t\t{\r\n\t     \"id\":\"31234123\",\r\n\t\"cerradura\": \"xb140\",\r\n\t\"direccion\": \"calle2-2\",\r\n\t\"hub\": {\r\n\t\t\"id\":\"2234134\",\r\n\t\t\"correoPropietario\":\"1@gmail.com\",\r\n\t\t\"documentoPropietario\":\"1221434\"\r\n\t},\r\n\t\"alarmas\":[\r\n\t\t{\r\n\t\t\t\"id\":\"1234341\",\r\n\t\t\t\"tipo\":\"1\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\":\"8234123\",\r\n\t\t\t\"tipo\":\"2\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\":\"92343\",\r\n\t\t\t\"tipo\":\"3\"\r\n\t\t}\r\n\t\t]\r\n\t},\r\n\t\r\n\t{\r\n\t\"id\":\"423412\",\r\n\t\"cerradura\": \"qw312\",\r\n\t\"direccion\": \"calle2-2\",\r\n\t\"alarmas\":[\r\n\t\t{\r\n\t\t\t\"id\":\"10123412\",\r\n\t\t\t\"tipo\":\"1\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\":\"11123412\",\r\n\t\t\t\"tipo\":\"2\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\":\"1234134\",\r\n\t\t\t\"tipo\":\"3\"\r\n\t\t}\r\n\t\t]\r\n\t}\r\n]\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d8af37d3-0b87-4d4d-9012-218b598fd79f",
+			"name": "Poblar5",
+			"url": "http://localhost:8080/conjuntos",
+			"description": "\t\t",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\t\"id\":\"36\",\r\n\t\"nombre\":\"acacias\",\r\n\t\"direccion\":\"calle37\",\r\n\t\"inmuebles\":[\r\n\t\t{\r\n\t\t\t\"id\":\"38\",\r\n\t\t\t\"cerradura\": \"xb140\",\r\n\t\t\t\"direccion\": \"calle1-39\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"40\",\r\n\t\t\t\t\"correoPropietario\":\"41@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"42\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"43\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"44\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"45\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\r\n\t\t{\r\n\t\t\t\"id\":\"46\",\r\n\t\t\t\"cerradura\": \"qw312\",\r\n\t\t\t\"direccion\": \"calle1-47\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"48\",\r\n\t\t\t\t\"correoPropietario\":\"49@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"50\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"51\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"52\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"53\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\t\r\n\t\t}\r\n\t]\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "e4f1031b-7dbb-4b91-bc25-721f18f7aab9",
+			"name": "Poblar1",
+			"url": "http://localhost:8080/conjuntos/",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"rawModeData": "{\r\n\t\"id\":\"1234123412\",\r\n\t\"nombre\":\"acacias\",\r\n\t\"direccion\":\"calle1\",\r\n\t\"inmuebles\":[\r\n\t\t{\r\n\t     \"id\":\"1341212\",\r\n\t\"cerradura\": \"xb140\",\r\n\t\"direccion\": \"calle1-1\",\r\n\t\"hub\": {\r\n\t\t\"id\":\"535354254\",\r\n\t\t\"correoPropietario\":\"1@gmail.com\",\r\n\t\t\"documentoPropietario\":\"1221434\"\r\n\t},\r\n\t\"alarmas\":[\r\n\t\t{\r\n\t\t\t\"id\":\"113412\",\r\n\t\t\t\"tipo\":\"1\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\":\"2213412\",\r\n\t\t\t\"tipo\":\"2\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\":\"323421\",\r\n\t\t\t\"tipo\":\"3\"\r\n\t\t}\r\n\t\t]\r\n\t},\r\n\t\r\n\t{\r\n\t\"id\":\"2\",\r\n\t\"cerradura\": \"qw312\",\r\n\t\"direccion\": \"calle1-2\",\r\n\t\"alarmas\":[\r\n\t\t{\r\n\t\t\t\"id\":\"4123412\",\r\n\t\t\t\"tipo\":\"1\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\":\"51234214\",\r\n\t\t\t\"tipo\":\"2\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\":\"62342342\",\r\n\t\t\t\"tipo\":\"3\"\r\n\t\t}\r\n\t\t]\r\n\t}\r\n]\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "ef9649ba-0608-44be-b667-fbc97135f1ac",
+			"name": "poblar3",
+			"url": "http://localhost:8080/conjuntos",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\t\"id\":\"746546\",\r\n\t\"nombre\":\"acacias1\",\r\n\t\"direccion\":\"calle1\",\r\n\t\"inmuebles\":[\r\n\t\t{\r\n\t\t\t\"id\":\"2\",\r\n\t\t\t\"cerradura\": \"xb140\",\r\n\t\t\t\"direccion\": \"calle1-3\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"1\",\r\n\t\t\t\t\"correoPropietario\":\"4@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"5\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"6\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"7\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"8\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\r\n\t\t{\r\n\t\t\t\"id\":\"9\",\r\n\t\t\t\"cerradura\": \"qw312\",\r\n\t\t\t\"direccion\": \"calle1-10\",\r\n\t\t\t\"hub\": {\r\n\t\t\t\t\"id\":\"11\",\r\n\t\t\t\t\"correoPropietario\":\"12@gmail.com\",\r\n\t\t\t\t\"documentoPropietario\":\"13\"\r\n\t\t\t},\r\n\t\t\t\"alarmas\":[\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"14\",\r\n\t\t\t\t\"tipo\":\"1\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"15\",\r\n\t\t\t\t\"tipo\":\"2\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"id\":\"16\",\r\n\t\t\t\t\"tipo\":\"3\"\r\n\t\t\t}\r\n\t\t\t]\t\r\n\t\t}\r\n\t]\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
