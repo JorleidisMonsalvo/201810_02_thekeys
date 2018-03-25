@@ -23,13 +23,8 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.service;
 
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IRealTimeDataLogic;
-import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.AlarmaLogic;
-import co.edu.uniandes.isis2503.nosqljpa.logic.RealTimeDataLogic;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.RealTimeDataDTO;
 import com.sun.istack.logging.Logger;
 import java.util.List;
 import java.util.logging.Level;
@@ -43,7 +38,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaLogic;
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubLogic;
 
 /**
  *
