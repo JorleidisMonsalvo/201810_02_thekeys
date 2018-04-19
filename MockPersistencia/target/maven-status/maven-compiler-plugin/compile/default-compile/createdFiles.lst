@@ -10,6 +10,7 @@ co\edu\uniandes\isis2503\nosqljpa\service\InmuebleService.class
 co\edu\uniandes\isis2503\nosqljpa\logic\ConjuntoLogic.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\model\AlarmaDTO.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IHubConverter.class
+co\edu\uniandes\isis2503\nosqljpa\model\dto\model\AlarmaDTO2.class
 co\edu\uniandes\isis2503\nosqljpa\model\entity\HubEntity.class
 co\edu\uniandes\isis2503\nosqljpa\logic\InmuebleLogic.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\model\ConjuntoDTO.class

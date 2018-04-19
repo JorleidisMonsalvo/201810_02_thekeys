@@ -47,6 +47,7 @@ import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.AlarmaLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO2;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConjuntoDTO2;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
 import java.util.ArrayList;
@@ -119,6 +120,23 @@ public class ConjuntoService {
         }catch(Exception e){
         }
         return inmuebles;
+    }
+    
+    @GET
+    @Path("/alarmas")
+    public List<AlarmaDTO2> findAlarmas() {
+        List<AlarmaDTO2> alarmas=new ArrayList<>();
+        for(ConjuntoDTO c:conjuntoLogic.all()){
+            for(String i:c.getInmuebles()){
+                InmuebleDTO iAct=inmuebleLogic.find(i);
+                for(String a:iAct.getAlarmas()){
+                    AlarmaDTO aAct=alarmaLogic.find(a);
+                    AlarmaDTO2 alarma=new AlarmaDTO2(aAct.getId(),aAct.getTipo(), iAct.getId(), c.getId());
+                    alarmas.add(alarma);
+                }
+            }
+        }
+        return alarmas;
     }
 
     @GET

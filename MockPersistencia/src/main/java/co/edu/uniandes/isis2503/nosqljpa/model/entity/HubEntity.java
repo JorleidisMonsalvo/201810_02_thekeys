@@ -35,7 +35,7 @@ import org.hibernate.annotations.DynamicUpdate;
  */
 
 @Entity
-@Table(name = "MEASUREMENT")
+@Table(name = "HUBS")
 public class HubEntity implements Serializable {
     @Id
     private String id;

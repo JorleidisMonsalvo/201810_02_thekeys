@@ -37,7 +37,7 @@ import org.hibernate.annotations.DynamicUpdate;
  * @author ca.mendoza968
  */
 @Entity
-@Table(name = "FLOOR")
+@Table(name = "CONJUNTOS")
 public class ConjuntoEntity implements Serializable {
 
     @Id

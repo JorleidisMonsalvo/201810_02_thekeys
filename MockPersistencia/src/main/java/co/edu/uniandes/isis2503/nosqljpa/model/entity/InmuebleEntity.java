@@ -38,7 +38,7 @@ import org.hibernate.annotations.DynamicUpdate;
  * @author ca.mendoza968
  */
 @Entity
-@Table(name = "ROOM")
+@Table(name = "INMUEBLES")
 public class InmuebleEntity implements Serializable {
 
     @Id
