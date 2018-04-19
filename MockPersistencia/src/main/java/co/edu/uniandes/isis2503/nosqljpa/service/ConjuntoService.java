@@ -107,6 +107,23 @@ public class ConjuntoService {
         return conjuntoLogic.find(id);
     }
     
+     @GET
+    @Path("/{id}/alarmas")
+    public List<AlarmaDTO2> findAlarmas(@PathParam("id") String id) {
+       List<AlarmaDTO2> alarmas=new ArrayList<>();
+       ConjuntoDTO c=conjuntoLogic.find(id);
+            for(String i:c.getInmuebles()){
+                InmuebleDTO iAct=inmuebleLogic.find(i);
+                for(String a:iAct.getAlarmas()){
+                    AlarmaDTO aAct=alarmaLogic.find(a);
+                    AlarmaDTO2 alarma=new AlarmaDTO2(aAct.getId(),aAct.getTipo(), iAct.getId(), c.getId());
+                    alarmas.add(alarma);
+                }
+            }
+        
+        return alarmas;
+    }
+    
     @GET
     @Path("/{id}/inmuebles")
     public List<InmuebleDTO> findInmuebles(@PathParam("id") String id) {
