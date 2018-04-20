@@ -23,6 +23,8 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.service;
 
+import co.edu.uniandes.isis2503.nosqljpa.auth.AuthorizationFilter.Role;
+import co.edu.uniandes.isis2503.nosqljpa.auth.Secured;
 import co.edu.uniandes.isis2503.nosqljpa.logic.InmuebleLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.AlarmaLogic;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO;
@@ -52,6 +54,7 @@ import java.util.ArrayList;
  * @author ca.mendoza968
  */
 @Path("/inmuebles")
+@Secured({})
 @Produces(MediaType.APPLICATION_JSON)
 public class InmuebleService {
     
@@ -66,6 +69,7 @@ public class InmuebleService {
     }
 
     @POST
+    @Secured({Role.yale})
     public InmuebleDTO add(InmuebleDTO2 dto){
         for(AlarmaDTO a:dto.getAlarmas()){
             alarmaLogic.add(a);
@@ -79,6 +83,7 @@ public class InmuebleService {
     
     @POST
     @Path("{id}/alarmas")
+    @Secured({Role.cerradura})
     public AlarmaDTO addAlarma(@PathParam("id") String id, AlarmaDTO dto) {
         InmuebleDTO inmueble = inmuebleLogic.find(id);
         AlarmaDTO result = alarmaLogic.add(dto);
@@ -90,6 +95,7 @@ public class InmuebleService {
     
     @POST
     @Path("{id}/hub")
+    @Secured({Role.yale})
     public HubDTO addHub(@PathParam("id") String id, HubDTO dto) {
         InmuebleDTO inmueble = inmuebleLogic.find(id);
         HubDTO result = hubLogic.add(dto);
@@ -124,6 +130,7 @@ public class InmuebleService {
     }
 
     @GET
+    @Secured({Role.yale,Role.administrador,Role.seguridad})
     public List<InmuebleDTO> all() {
         return inmuebleLogic.all();
     }
@@ -143,6 +150,7 @@ public class InmuebleService {
 
     @DELETE
     @Path("/{id}")
+    @Secured({Role.yale})
     public Response delete(@PathParam("id") String id) {
         try {
             inmuebleLogic.delete(id);

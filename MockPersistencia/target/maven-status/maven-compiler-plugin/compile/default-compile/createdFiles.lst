@@ -1,17 +1,21 @@
 co\edu\uniandes\isis2503\nosqljpa\model\entity\InmuebleEntity.class
 co\edu\uniandes\isis2503\nosqljpa\model\entity\ConjuntoEntity.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IInmuebleLogic.class
+co\edu\uniandes\isis2503\nosqljpa\auth\Secured.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\model\InmuebleDTO2.class
 co\edu\uniandes\isis2503\nosqljpa\logic\AlarmaLogic.class
 co\edu\uniandes\isis2503\nosqljpa\persistence\Persistencer.class
+co\edu\uniandes\isis2503\nosqljpa\auth\AuthenticationFilter$1.class
 co\edu\uniandes\isis2503\nosqljpa\persistence\AlarmaPersistence.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IHubLogic.class
 co\edu\uniandes\isis2503\nosqljpa\service\InmuebleService.class
+co\edu\uniandes\isis2503\nosqljpa\auth\CORSFilter.class
 co\edu\uniandes\isis2503\nosqljpa\logic\ConjuntoLogic.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\model\AlarmaDTO.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IHubConverter.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\model\AlarmaDTO2.class
 co\edu\uniandes\isis2503\nosqljpa\model\entity\HubEntity.class
+co\edu\uniandes\isis2503\nosqljpa\auth\AuthenticationFilter.class
 co\edu\uniandes\isis2503\nosqljpa\logic\InmuebleLogic.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\model\ConjuntoDTO.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\converter\AlarmaConverter.class
@@ -19,6 +23,7 @@ co\edu\uniandes\isis2503\nosqljpa\main\Main.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\converter\HubConverter.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IConjuntoLogic.class
 co\edu\uniandes\isis2503\nosqljpa\service\ConjuntoService.class
+co\edu\uniandes\isis2503\nosqljpa\auth\AuthorizationFilter$Role.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IAlarmaConverter.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IAlarmaLogic.class
 co\edu\uniandes\isis2503\nosqljpa\interfaces\IConjuntoConverter.class
@@ -32,6 +37,7 @@ co\edu\uniandes\isis2503\nosqljpa\model\dto\model\InmuebleDTO.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\model\HubDTO.class
 co\edu\uniandes\isis2503\nosqljpa\persistence\InmueblePersistence.class
 co\edu\uniandes\isis2503\nosqljpa\logic\HubLogic.class
+co\edu\uniandes\isis2503\nosqljpa\auth\AuthorizationFilter.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\converter\InmuebleConverter.class
 co\edu\uniandes\isis2503\nosqljpa\model\entity\AlarmaEntity.class
 co\edu\uniandes\isis2503\nosqljpa\persistence\ConjuntoPersistence.class

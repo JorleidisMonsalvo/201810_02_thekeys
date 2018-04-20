@@ -23,6 +23,8 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.service;
 
+import co.edu.uniandes.isis2503.nosqljpa.auth.AuthorizationFilter.Role;
+import co.edu.uniandes.isis2503.nosqljpa.auth.Secured;
 import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
 import com.sun.istack.logging.Logger;
@@ -44,6 +46,7 @@ import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubLogic;
  * @author ca.mendoza968
  */
 @Path("/hubs")
+@Secured({Role.yale})
 @Produces(MediaType.APPLICATION_JSON)
 public class HubService {
     private final IHubLogic hubLogic;

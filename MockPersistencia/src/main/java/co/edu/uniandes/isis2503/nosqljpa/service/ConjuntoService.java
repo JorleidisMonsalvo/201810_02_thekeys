@@ -23,6 +23,9 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.service;
 
+import co.edu.uniandes.isis2503.nosqljpa.auth.AuthorizationFilter;
+import co.edu.uniandes.isis2503.nosqljpa.auth.AuthorizationFilter.Role;
+import co.edu.uniandes.isis2503.nosqljpa.auth.Secured;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaConverter;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.ConjuntoLogic;
@@ -57,6 +60,7 @@ import java.util.ArrayList;
  * @author ca.mendoza968
  */
 @Path("/conjuntos")
+@Secured({Role.administrador,Role.yale,Role.seguridad})
 @Produces(MediaType.APPLICATION_JSON)
 public class ConjuntoService {
 
@@ -103,11 +107,12 @@ public class ConjuntoService {
 
     @GET
     @Path("/{id}")
+    @Secured((Role.yale))
     public ConjuntoDTO find(@PathParam("id") String id) {
         return conjuntoLogic.find(id);
     }
     
-     @GET
+    @GET
     @Path("/{id}/alarmas")
     public List<AlarmaDTO2> findAlarmas(@PathParam("id") String id) {
        List<AlarmaDTO2> alarmas=new ArrayList<>();
@@ -141,6 +146,7 @@ public class ConjuntoService {
     
     @GET
     @Path("/alarmas")
+    @Secured({Role.yale})
     public List<AlarmaDTO2> findAlarmas() {
         List<AlarmaDTO2> alarmas=new ArrayList<>();
         for(ConjuntoDTO c:conjuntoLogic.all()){
@@ -157,6 +163,7 @@ public class ConjuntoService {
     }
 
     @GET
+    @Secured({Role.yale})
     public List<ConjuntoDTO> all() {
         return conjuntoLogic.all();
     }

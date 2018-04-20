@@ -52,9 +52,11 @@ import javax.ws.rs.ext.Provider;
 public class AuthorizationFilter implements ContainerRequestFilter {
 
     public enum Role {
-        admin,
-        user,
-        service
+        administrador,
+        propietario,
+        seguridad,
+        yale,
+        cerradura
     }
 
     @Context

@@ -42,7 +42,7 @@
       <property name="kundera.pool.size.max.idle" value="100"/>
       <property name="kundera.pool.size.max.active" value="100"/>
       <property name="kundera.pool.size.max.total" value="100"/>
-      <property name="kundera.ddl.auto.prepare" value="create-drop"/>
+      <property name="kundera.ddl.auto.prepare" value="update"/>
     </properties>
   </persistence-unit>
 </persistence>
