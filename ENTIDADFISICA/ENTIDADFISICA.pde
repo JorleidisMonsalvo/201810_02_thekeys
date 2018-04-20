@@ -1,3 +1,4 @@
+#include <EEPROM.h>
 #include <Keypad.h>
 
 int redPin= 13;
@@ -24,8 +25,7 @@ double batteryCharge;
 
 
 //Specified password
-const String KEY = "1234";
-String keys[4] = {"1234","1235","1236","1237"};
+String keys[20];
 int contaKeys;
 int contadorParcial;
 //Time in milliseconds which the system is locked
@@ -94,7 +94,7 @@ long currTime;
 long currTime2;
 
 void setup() {
-
+        readAllKeys();
 	pinMode(redPin, OUTPUT);
 	pinMode(greenPin, OUTPUT);
 	pinMode(bluePin, OUTPUT);
@@ -201,12 +201,12 @@ void loop() {
 		currentKey = "";
 	}
 	//If the current key contains '#' reset attempt
-	if(currentKey.endsWith("#")&&currentKey.length()<=KEY.length()) {
+	if(currentKey.endsWith("#")&&currentKey.length()<=4) {
 		currentKey = "";
 		//Serial.println("Attempt deleted");
 	}
 
-	for(contaKeys=0;contaKeys<4;contaKeys++)
+	for(contaKeys=0;contaKeys<20;contaKeys++)
 	{
 		//If current key matches the key length
 		if (currentKey.length()== keys[contaKeys].length()) {
@@ -303,4 +303,47 @@ void setColor(int redValue, int greenValue, int blueValue) {
 	analogWrite(redPin, redValue);
 	analogWrite(greenPin, greenValue);
 	analogWrite(bluePin, blueValue);
+}
+//ejecutar 1 vez
+void setAllKeys()
+{
+  for(int i=0;i<80;i++)
+{
+  EEPROM.write(i, 'X');
+}
+
+}
+void changeKey(int numKey,String key)
+{
+  keys[numKey-1]=key;
+  char keyarray[3];
+  int unoacuatro=0;
+  key.toCharArray(keyarray,4);
+  numKey--;
+  if(numKey>0)
+  {
+  numKey*=4;
+  }
+  for(int i=numKey;i<numKey+4;i++)
+  {
+    EEPROM.write(i, keyarray[unoacuatro]);
+    unoacuatro++;
+  }
+}
+
+void readAllKeys()
+{
+  String valor="";
+  int contador=0;
+  for(int i=0;i<80;i++)
+  {
+    valor+=EEPROM.read(i);    
+    contador++;
+    if(contador==4)
+    {
+      keys[(i+1)/4]=valor;
+      contador=0;
+    }
+  }
+
 }
