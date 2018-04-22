@@ -2,7 +2,7 @@ import json
 import requests
 from kafka import KafkaConsumer
 
-consumer = KafkaConsumer('alarma.conjunto1.baja.1-101',
+consumer = KafkaConsumer('alarma.conjunto1.baja.1-101.pre',
                          bootstrap_servers=['172.24.42.103:8090'])
 
 for message in consumer:

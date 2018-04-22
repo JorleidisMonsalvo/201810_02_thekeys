@@ -2,11 +2,12 @@ import json
 import requests
 from kafka import KafkaConsumer
 
-consumer = KafkaConsumer('alarma.conjunto1.alta.1-101',
+consumer = KafkaConsumer('alarma.conjunto1.alta.1-101.pre',
                          bootstrap_servers=['172.24.42.103:8090'])
 
 for message in consumer:
     elTipo= message.value.decode('utf-8')
+    print(message.value.decode('utf-8'))
     data={"tipo":elTipo}
     data_string = json.dumps(data)
     directorio = message.topic.split('.')
