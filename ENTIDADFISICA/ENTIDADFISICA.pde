@@ -119,7 +119,37 @@ void setup() {
   //Input pin definition for battery measure
   pinMode(BATTERY_PIN,INPUT);
 }
+
+void receiveData() {
+  while (Serial.available()) {
+    // get the new byte:
+    char inChar = (char)Serial.read();
+    // add it to the inputString:
+    inputString += inChar;
+    if (inChar == '\n') {
+      inputString.toCharArray(bufferData, SIZE_BUFFER_DATA);
+    }
+  }
+}
+
 void loop() {
+  
+  receiveData();
+  
+  if(inputString.contains("DELETEALL"))
+  {
+    setAllKeys();
+  }
+  else if(inputString.contains("DELETE"))
+  {
+    changeKey(1,"XXXX");
+  }  
+  else if(inputString.contains("UPDATE"))
+  {
+    changeKey(1,"2222");
+  }
+  inputString="";
+  
   ///////////////////////////////////////Battery////////////////////////////////////////////////////////
   
   batteryCharge = (analogRead(BATTERY_PIN)*5.4)/1024;
@@ -299,6 +329,7 @@ void loop() {
 	delay(100);
 
 }
+
 void setColor(int redValue, int greenValue, int blueValue) {
 	analogWrite(redPin, redValue);
 	analogWrite(greenPin, greenValue);
@@ -345,5 +376,3 @@ void readAllKeys()
       contador=0;
     }
   }
-
-}
