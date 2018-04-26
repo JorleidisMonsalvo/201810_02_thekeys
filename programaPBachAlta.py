@@ -14,7 +14,7 @@ username = "cerra1@yalelock.co"
 password ="Nolohagas1234"
 
 # Get an access token from Auth0
-base_url = "https://{domain}".format(domain=domain) + "/oauth/token"
+base_url = "https://isis2503-jcgloria.auth0.com/oauth/token"
 
 payload = {
     'client_id': client_id,
@@ -23,12 +23,13 @@ payload = {
     'grant_type': grant_type,
     'realm': realm,
     'username': username,
-    'password': password
+    'password': password,
+    'scope':scope
 }
 response = requests.post(base_url, data=json.dumps(payload), headers={'Content-type': 'application/json'})
 
 auth0_response = response.json()
-print("Access Token: " + auth0_response.get('access_token'))
+print("Id Token: " + auth0_response.get('id_token'))
 print("Response Status Code: " + str(response.status_code))
 
 consumer = KafkaConsumer('alarma.conjunto1.alta.1-101.pre',
@@ -43,5 +44,5 @@ for message in consumer:
     directorio = message.topic.split('.')
     ubicacion=directorio[3]
     url = "http://172.24.42.79:8080/inmuebles/"+ubicacion+"/alarmas"
-    response = requests.post(url,data_string, headers={'Content-type': 'application/json','Authorization':'Bearer '+auth0_response.get('access_token')})
+    response = requests.post(url,data_string, headers={'Content-type': 'application/json','Authorization':'Bearer '+auth0_response.get('id_token')})
     print("Response Status Code: " + str(response.status_code))
