@@ -99,6 +99,11 @@ boolean buttonState;
 long currTime;
 long currTime2;
 
+//conteo tiempo
+long timeHearth=0;
+//Intervalo Healthcheck
+long intervalo=3000;
+
 void setup() {
 
         
@@ -274,7 +279,12 @@ currentKey = "";
 attempts = 0;
 setColor(255,0,0);
 Serial.println("2"); 
-delay(LOCK_TIME); 
+for(int i =0;i<30000;i+=intervalo)
+{
+delay(intervalo);
+Serial.println("0"); 
+}
+//delay(LOCK_TIME);
 //Serial.println("System unlocked");
 setColor(0,0,255);
 }
@@ -314,6 +324,11 @@ buttonState = false;
 //Serial.println("Door closed!!");
 }
 }
+
+//////////////////////////////////////////////////////////////////HEALTHCHECK//////////////////////////////
+
+healthCheck();
+
 delay(100);
 
 }
@@ -322,6 +337,15 @@ void setColor(int redValue, int greenValue, int blueValue) {
 analogWrite(redPin, redValue);
 analogWrite(greenPin, greenValue);
 analogWrite(bluePin, blueValue);
+}
+
+void healthCheck()
+{
+if((millis()-timeHearth)>intervalo)
+  {
+  Serial.println("0");
+      timeHearth=millis();
+  }
 }
 
 void receiveData() {
@@ -374,6 +398,11 @@ void processData()
     String numkey= inputString.substring(12);
   changeKey(numkey.toInt(),newkey);
   }
+  else if(inputString.startsWith("HEALTHCHECK"))
+{
+  String newkey=inputString.substring(12);
+  intervalo=newkey.toInt()*1000;
+}
    else if(inputString.equals("SHOW"))
   {
     for(int i=0;i<20;i++)
