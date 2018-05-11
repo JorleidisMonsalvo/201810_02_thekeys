@@ -1,5 +1,6 @@
 #include <PubSubClient.h>
 #include <ESP8266WiFi.h>
+#include <string.h>
 
 //DEFINES
 #define TOPIC_SUBSCRIBE        "claves.conjunto1.1-101"
@@ -106,13 +107,13 @@ void processData() {
     }
 
     if (stringComplete && clientMQTT.connected()) {
-      if(inputString == "1\n") {
+      if(inputString.startsWith("1")) {
         if(clientMQTT.publish(TOPIC_PUBLISH_2, bufferData)) {
           inputString = "";
           stringComplete = false;
         }
       }
-      else if(inputString== "0\n") 
+      else if(inputString.startsWith("0")) 
       {
         if(clientMQTT.publish(TOPIC_HEALTHCHECK, bufferData)) {
           inputString = "";
