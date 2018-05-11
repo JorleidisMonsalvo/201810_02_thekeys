@@ -37,13 +37,34 @@ public class HorarioDTO {
     private Date inicio;
     private Date fin;
     
+    private String inmueble;
+    private String usuario;
+
+    public String getInmueble() {
+        return inmueble;
+    }
+
+    public void setInmueble(String inmueble) {
+        this.inmueble = inmueble;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    
     public HorarioDTO() {
     }
 
-    public HorarioDTO(String id,Date inicio,Date fin) {
+    public HorarioDTO(String id,Date inicio,Date fin,String u,String i) {
         this.id = id;
         this.inicio=inicio;
         this.fin=fin;
+        this.usuario=u;
+        this.inmueble=i;
     }
     public String getId() {
         return id;

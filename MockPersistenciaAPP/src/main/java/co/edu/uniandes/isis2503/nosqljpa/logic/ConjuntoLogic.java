@@ -66,6 +66,11 @@ public class ConjuntoLogic implements IConjuntoLogic{
     public ConjuntoDTO findCode(String code) {
         return CONVERTER.entityToDto(persistence.findCode(code));
     }
+    
+    @Override
+    public List<ConjuntoDTO> findAlarmasPorBarrio(String barrio){
+        return CONVERTER.listEntitiesToListDTOs(persistence.findAlarmasPorBarrio(barrio));
+    }
 
     @Override
     public List<ConjuntoDTO> all() {

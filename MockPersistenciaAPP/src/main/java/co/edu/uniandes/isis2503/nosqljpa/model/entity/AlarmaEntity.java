@@ -24,13 +24,10 @@
 package co.edu.uniandes.isis2503.nosqljpa.model.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.ElementCollection;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.annotations.DynamicUpdate;
 
 /**
  *
@@ -44,13 +41,21 @@ public class AlarmaEntity implements Serializable {
     private String id;
 
     private String tipo;
+    
+    private Date fecha; 
+
+    public Date getFecha() {
+        return fecha;
+    }
 
     public AlarmaEntity() {
+        this.fecha=new Date(System.currentTimeMillis());
     }
 
     public AlarmaEntity(String id, String tipo) {
         this.id = id;
         this.tipo = tipo;
+        this.fecha=new Date(System.currentTimeMillis());
     }
 
     public String getId() {

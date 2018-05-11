@@ -53,14 +53,16 @@ import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO2;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.ConjuntoDTO2;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author ca.mendoza968
  */
 @Path("/conjuntos")
-@Secured({Role.administrador,Role.yale})
+@Secured({Role.administrador,Role.yale,Role.seguridad})
 @Produces(MediaType.APPLICATION_JSON)
 public class ConjuntoService {
 
@@ -113,6 +115,50 @@ public class ConjuntoService {
     }
     
     @GET
+    @Path("/apb/{barrio}/{mes}")
+    public List<AlarmaDTO2> findAlarmasPorBarrio(@PathParam("barrio") String id,@PathParam("mes") String mes) {
+       List<AlarmaDTO2> alarmas=new ArrayList<>();
+       List<ConjuntoDTO> conjuntos=conjuntoLogic.findAlarmasPorBarrio(id.replace('-',' '));
+       for(ConjuntoDTO c:conjuntos){     
+            for(String i:c.getInmuebles()){
+                InmuebleDTO iAct=inmuebleLogic.find(i);
+                for(String a:iAct.getAlarmas()){
+                    
+                    AlarmaDTO aAct=alarmaLogic.find(a);
+                    SimpleDateFormat s =new SimpleDateFormat("MM");
+                    if(s.format(aAct.getFecha()).equals(mes)){
+                    AlarmaDTO2 alarma=new AlarmaDTO2(aAct.getId(),aAct.getTipo(), iAct.getId(), c.getId(),aAct.getFecha().toLocaleString());
+                    alarmas.add(alarma);
+                    }
+                    } 
+            }
+       }
+        return alarmas;
+    }
+    
+    @GET
+    @Path("/{id}/alarmas/{mes}")
+    public List<AlarmaDTO2> findAlarmasPorUnidad(@PathParam("id") String id,@PathParam("mes") String mes) {
+       List<AlarmaDTO2> alarmas=new ArrayList<>();
+       ConjuntoDTO c=conjuntoLogic.find(id);
+            if(c!=null){
+                for(String i:c.getInmuebles()){
+                    InmuebleDTO iAct=inmuebleLogic.find(i);
+                    for(String a:iAct.getAlarmas()){
+                    
+                        AlarmaDTO aAct=alarmaLogic.find(a);
+                        SimpleDateFormat s =new SimpleDateFormat("MM");
+                            if(s.format(aAct.getFecha()).equals(mes)){
+                                AlarmaDTO2 alarma=new AlarmaDTO2(aAct.getId(),aAct.getTipo(), iAct.getId(), c.getId(),aAct.getFecha().toLocaleString());
+                                alarmas.add(alarma);
+                            }
+                        } 
+                }
+            }
+        return alarmas;
+    }
+    
+    @GET
     @Path("/{id}/alarmas")
     public List<AlarmaDTO2> findAlarmas(@PathParam("id") String id) {
        List<AlarmaDTO2> alarmas=new ArrayList<>();
@@ -121,7 +167,7 @@ public class ConjuntoService {
                 InmuebleDTO iAct=inmuebleLogic.find(i);
                 for(String a:iAct.getAlarmas()){
                     AlarmaDTO aAct=alarmaLogic.find(a);
-                    AlarmaDTO2 alarma=new AlarmaDTO2(aAct.getId(),aAct.getTipo(), iAct.getId(), c.getId());
+                    AlarmaDTO2 alarma=new AlarmaDTO2(aAct.getId(),aAct.getTipo(), iAct.getId(), c.getId(),aAct.getFecha().toLocaleString());
                     alarmas.add(alarma);
                 }
             }
@@ -130,6 +176,7 @@ public class ConjuntoService {
     }
     
     @GET
+    @Secured((Role.yale))
     @Path("/{id}/inmuebles")
     public List<InmuebleDTO> findInmuebles(@PathParam("id") String id) {
         ConjuntoDTO conjunto;
@@ -149,15 +196,15 @@ public class ConjuntoService {
     @Secured({Role.yale})
     public List<AlarmaDTO2> findAlarmas() {
         List<AlarmaDTO2> alarmas=new ArrayList<>();
-        for(ConjuntoDTO c:conjuntoLogic.all()){
-            for(String i:c.getInmuebles()){
-                InmuebleDTO iAct=inmuebleLogic.find(i);
-                for(String a:iAct.getAlarmas()){
-                    AlarmaDTO aAct=alarmaLogic.find(a);
-                    AlarmaDTO2 alarma=new AlarmaDTO2(aAct.getId(),aAct.getTipo(), iAct.getId(), c.getId());
-                    alarmas.add(alarma);
+            for(ConjuntoDTO c:conjuntoLogic.all()){
+                for(String i:c.getInmuebles()){
+                    InmuebleDTO iAct=inmuebleLogic.find(i);
+                    for(String a:iAct.getAlarmas()){
+                        AlarmaDTO aAct=alarmaLogic.find(a);
+                        AlarmaDTO2 alarma=new AlarmaDTO2(aAct.getId(),aAct.getTipo(), iAct.getId(), c.getId(),aAct.getFecha().toLocaleString());
+                        alarmas.add(alarma);
+                    }
                 }
-            }
         }
         return alarmas;
     }

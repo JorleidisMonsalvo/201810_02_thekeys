@@ -46,6 +46,16 @@ public class ConjuntoEntity implements Serializable {
     private String direccion;
     
     private String nombre;
+    
+    private String barrio;
+
+    public String getBarrio() {
+        return barrio;
+    }
+
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
+    }
 
     @ElementCollection
     private List<String> inmuebles;
@@ -54,11 +64,12 @@ public class ConjuntoEntity implements Serializable {
         this.inmuebles = new ArrayList();
     }
 
-    public ConjuntoEntity(String id, String direccion, String nombre,List<String> inmuebles) {
+    public ConjuntoEntity(String id, String direccion, String nombre,List<String> inmuebles,String barrio) {
         this.id = id;
         this.direccion = direccion;
         this.nombre = nombre;
         this.inmuebles = inmuebles;
+        this.barrio=barrio;
     }
 
     public List<String> getInmuebles() {

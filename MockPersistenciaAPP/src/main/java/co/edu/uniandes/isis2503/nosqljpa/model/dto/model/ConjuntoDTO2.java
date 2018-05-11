@@ -37,6 +37,15 @@ public class ConjuntoDTO2 {
     private String nombre;
     private String direccion;
     private List<InmuebleDTO2> inmuebles;
+    private String barrio;
+
+    public String getBarrio() {
+        return barrio;
+    }
+
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
+    }
 
     public List<InmuebleDTO2> getInmuebles() {
         return inmuebles;
@@ -50,11 +59,12 @@ public class ConjuntoDTO2 {
         this.inmuebles = new ArrayList();
     }
 
-    public ConjuntoDTO2(String id, String name, String direccion,List<InmuebleDTO2> inmuebles) {
+    public ConjuntoDTO2(String id, String name, String direccion,List<InmuebleDTO2> inmuebles,String barrio) {
         this.id = id;
         this.nombre = name;
         this.direccion = direccion;
         this.inmuebles = inmuebles;
+        this.barrio=barrio;
     }
 
     public String getDireccion() {
@@ -90,6 +100,7 @@ public class ConjuntoDTO2 {
         for(InmuebleDTO2 i:this.inmuebles){
             c.addInmueble(i.getId());
         }
+        c.setBarrio(this.barrio);
         return c;
     }
 

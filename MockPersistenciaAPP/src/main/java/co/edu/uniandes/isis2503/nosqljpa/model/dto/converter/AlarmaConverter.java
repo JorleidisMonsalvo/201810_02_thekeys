@@ -45,6 +45,7 @@ public class AlarmaConverter implements IAlarmaConverter {
         AlarmaDTO dto = new AlarmaDTO();
         dto.setId(entity.getId());
         dto.setTipo(entity.getTipo());
+        dto.setFecha(entity.getFecha());
         return dto;
     }
 

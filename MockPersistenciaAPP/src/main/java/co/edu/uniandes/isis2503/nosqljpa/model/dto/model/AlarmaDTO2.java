@@ -23,6 +23,7 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
 
+import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -33,9 +34,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class AlarmaDTO2 {
     private String id;
     private String tipo;
+    private String fecha;
     private String inmueble;
     private String conjunto;
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
     public String getInmueble() {
         return inmueble;
     }
@@ -55,11 +65,12 @@ public class AlarmaDTO2 {
     public AlarmaDTO2() {
     }
 
-    public AlarmaDTO2(String id, String tipo,String inmueble,String conjunto) {
+    public AlarmaDTO2(String id, String tipo,String inmueble,String conjunto,String fecha) {
         this.id = id;
         this.tipo = tipo;
         this.conjunto=conjunto;
         this.inmueble=inmueble;
+        this.fecha=fecha;
     }
 
     public String getId() {

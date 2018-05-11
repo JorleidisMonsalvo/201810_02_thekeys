@@ -42,14 +42,34 @@ public class HorarioEntity implements Serializable {
 
     private Date inicio;
     private Date fin;
+    private String inmueble;
+
+    public String getInmueble() {
+        return inmueble;
+    }
+
+    public void setInmueble(String inmueble) {
+        this.inmueble = inmueble;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    private String usuario;
 
     public HorarioEntity() {
     }
 
-    public HorarioEntity(String id,Date inicio,Date fin) {
+    public HorarioEntity(String id,Date inicio,Date fin,String i,String u) {
         this.id = id;
         this.inicio=inicio;
         this.fin=fin;
+        this.usuario=u;
+        this.inmueble=i;
     }
 
     public String getId() {

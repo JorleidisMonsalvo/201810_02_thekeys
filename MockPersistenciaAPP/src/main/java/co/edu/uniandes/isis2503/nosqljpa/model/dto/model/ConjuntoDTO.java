@@ -37,6 +37,15 @@ public class ConjuntoDTO {
     private String nombre;
     private String direccion;
     private List<String> inmuebles;
+    private String barrio;
+
+    public String getBarrio() {
+        return barrio;
+    }
+
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
+    }
 
     public List<String> getInmuebles() {
         return inmuebles;
@@ -50,11 +59,12 @@ public class ConjuntoDTO {
         this.inmuebles = new ArrayList();
     }
 
-    public ConjuntoDTO(String id, String name, String direccion,List<String> inmuebles) {
+    public ConjuntoDTO(String id, String name, String direccion,List<String> inmuebles,String barrio) {
         this.id = id;
         this.nombre = name;
         this.direccion = direccion;
         this.inmuebles = inmuebles;
+        this.barrio=barrio;
     }
 
     public String getDireccion() {

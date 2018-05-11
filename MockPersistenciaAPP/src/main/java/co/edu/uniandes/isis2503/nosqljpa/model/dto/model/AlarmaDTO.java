@@ -24,6 +24,7 @@
 package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -35,13 +36,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class AlarmaDTO {
     private String id;
     private String tipo;
+    private Date fecha;
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
     public AlarmaDTO() {
     }
 
-    public AlarmaDTO(String id, String tipo) {
+    public AlarmaDTO(String id, String tipo,Date fecha) {
         this.id = id;
         this.tipo = tipo;
+        this.fecha=fecha;
     }
 
     public String getId() {

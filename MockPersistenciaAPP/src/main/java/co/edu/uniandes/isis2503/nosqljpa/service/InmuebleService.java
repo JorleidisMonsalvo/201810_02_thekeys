@@ -45,8 +45,10 @@ import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO2;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -115,6 +117,8 @@ public class InmuebleService {
         return inmuebleLogic.find(id);
     }
     
+    
+    
     @GET
     @Path("/{id}/hub")
     public HubDTO findHub(@PathParam("id") String id) {
@@ -143,6 +147,24 @@ public class InmuebleService {
         if(i!=null){
             for(String a:i.getAlarmas()){
                 alarmas.add(alarmaLogic.find(a));
+            }
+        }
+        return alarmas;
+    }
+    
+    @GET
+    @Path("/{id}/alarmas/{mes}")
+    public List<AlarmaDTO> findAlarmasPorMes(@PathParam("id") String id,@PathParam("mes") String mes) {
+        List<AlarmaDTO> alarmas=new ArrayList<>();
+        InmuebleDTO i=inmuebleLogic.find(id);
+        if(i!=null){
+            for(String a:i.getAlarmas()){
+                
+                AlarmaDTO aAct=alarmaLogic.find(a);
+                    SimpleDateFormat s =new SimpleDateFormat("MM");
+                    if(s.format(aAct.getFecha()).equals(mes)){
+                    alarmas.add(aAct);
+                    }
             }
         }
         return alarmas;

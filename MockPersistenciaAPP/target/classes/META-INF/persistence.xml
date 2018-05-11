@@ -31,6 +31,7 @@
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.HubEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.InmuebleEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.AlarmaEntity</class>
+    <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.HorarioEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="kundera.nodes" value="localhost"/>

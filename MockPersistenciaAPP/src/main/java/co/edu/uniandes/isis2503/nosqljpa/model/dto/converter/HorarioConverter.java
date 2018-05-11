@@ -46,6 +46,8 @@ public class HorarioConverter implements IHorarioConverter {
         dto.setId(entity.getId());
         dto.setFin(entity.getFin());
         dto.setInicio(entity.getInicio());
+        dto.setInmueble(entity.getInmueble());
+        dto.setUsuario(entity.getUsuario());
         return dto;
     }
 
@@ -55,6 +57,8 @@ public class HorarioConverter implements IHorarioConverter {
         entity.setId(dto.getId());
         entity.setFin(dto.getFin());
         entity.setInicio(dto.getInicio());
+        entity.setInmueble(dto.getInmueble());
+        entity.setUsuario(dto.getUsuario());
         return entity;
     }
 
