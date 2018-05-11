@@ -1,1 +1,1015 @@
-[{"id":"156c5cc9.6dcff3","type":"tab","label":"Flow 1","disabled":false,"info":""},{"id":"235745ce.3288fa","type":"mqtt out","z":"156c5cc9.6dcff3","name":"","topic":"claves.conjunto1.1-101","qos":"","retain":"","broker":"a83015d.ae262e8","x":650,"y":740,"wires":[]},{"id":"33ff2a0b.f5f246","type":"inject","z":"156c5cc9.6dcff3","name":"","topic":"","payload":"","payloadType":"date","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":740,"y":260,"wires":[["289a3a65.064da6"]]},{"id":"289a3a65.064da6","type":"mqtt out","z":"156c5cc9.6dcff3","name":"","topic":"alarma.conjunto1.baja.1-101.pre","qos":"","retain":"","broker":"a83015d.ae262e8","x":990,"y":260,"wires":[]},{"id":"1686fccc.79cef3","type":"mqtt out","z":"156c5cc9.6dcff3","name":"","topic":"claves.conjunto1.1-101","qos":"","retain":"","broker":"a83015d.ae262e8","x":1010,"y":380,"wires":[]},{"id":"b6715c82.a312a","type":"mqtt out","z":"156c5cc9.6dcff3","name":"","topic":"alarma.conjunto1.alta.1-101.pre","qos":"","retain":"","broker":"a83015d.ae262e8","x":990,"y":200,"wires":[]},{"id":"da7df41c.c98368","type":"mqtt out","z":"156c5cc9.6dcff3","name":"","topic":"healthcheck.conjunto1.1-101","qos":"","retain":"","broker":"a83015d.ae262e8","x":1000,"y":320,"wires":[]},{"id":"53ba044d.46166c","type":"inject","z":"156c5cc9.6dcff3","name":"","topic":"","payload":"","payloadType":"date","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":740,"y":320,"wires":[["da7df41c.c98368"]]},{"id":"6badfa92.43bd34","type":"inject","z":"156c5cc9.6dcff3","name":"","topic":"","payload":"","payloadType":"date","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":740,"y":380,"wires":[["1686fccc.79cef3"]]},{"id":"109aa2ed.c8488d","type":"inject","z":"156c5cc9.6dcff3","name":"","topic":"","payload":"","payloadType":"date","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":740,"y":200,"wires":[["b6715c82.a312a"]]},{"id":"95614586.7cf1a8","type":"mqtt in","z":"156c5cc9.6dcff3","name":"","topic":"alarma.conjunto1.alta.1-101.pre","qos":"2","broker":"3870aa56.895d06","x":270,"y":200,"wires":[["b55cd4fd.3ac7f8"]]},{"id":"e9f87a8c.534b68","type":"mqtt in","z":"156c5cc9.6dcff3","name":"","topic":"alarma.conjunto1.baja.1-101.pre","qos":"2","broker":"3870aa56.895d06","x":270,"y":260,"wires":[["de866073.329d3"]]},{"id":"6c499f79.20e18","type":"mqtt in","z":"156c5cc9.6dcff3","name":"","topic":"healthcheck.conjunto1.1-101","qos":"2","broker":"3870aa56.895d06","x":260,"y":320,"wires":[["dedd4944.ad1258"]]},{"id":"10c35139.9fc92f","type":"mqtt in","z":"156c5cc9.6dcff3","name":"","topic":"claves.conjunto1.1-101","qos":"2","broker":"3870aa56.895d06","x":240,"y":380,"wires":[["121f89d5.620426"]]},{"id":"b55cd4fd.3ac7f8","type":"debug","z":"156c5cc9.6dcff3","name":"ALTA","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","x":530,"y":200,"wires":[]},{"id":"de866073.329d3","type":"debug","z":"156c5cc9.6dcff3","name":"BAJA","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","x":530,"y":260,"wires":[]},{"id":"dedd4944.ad1258","type":"debug","z":"156c5cc9.6dcff3","name":"HEALTH","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","x":520,"y":320,"wires":[]},{"id":"121f89d5.620426","type":"debug","z":"156c5cc9.6dcff3","name":"CLAVES","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","x":520,"y":380,"wires":[]},{"id":"b07edb21.d471a8","type":"ui_button","z":"156c5cc9.6dcff3","name":"","group":"361b3bb5.39cbf4","order":0,"width":0,"height":0,"passthru":true,"label":"Crear","color":"","bgcolor":"","icon":"","payload":"CREATE:","payloadType":"str","topic":"","x":170,"y":580,"wires":[["e698b951.f6b778"]]},{"id":"2052ddb0.c4b6c2","type":"function","z":"156c5cc9.6dcff3","name":"","func":"global.set(\"claveActual\",msg.payload);\nreturn msg;","outputs":1,"noerr":0,"x":350,"y":820,"wires":[[]]},{"id":"fe8541ed.1344e","type":"ui_text_input","z":"156c5cc9.6dcff3","name":"","label":"Clave","group":"361b3bb5.39cbf4","order":0,"width":"0","height":"0","passthru":false,"mode":"tel","delay":300,"topic":"","x":150,"y":820,"wires":[["2052ddb0.c4b6c2"]]},{"id":"a5844f7b.dc0d3","type":"ui_button","z":"156c5cc9.6dcff3","name":"","group":"361b3bb5.39cbf4","order":0,"width":0,"height":0,"passthru":true,"label":"Modificar","color":"","bgcolor":"","icon":"","payload":"UPDATE:","payloadType":"str","topic":"","x":180,"y":620,"wires":[["9eb62312.fd827"]]},{"id":"db2370d3.e53ea","type":"ui_button","z":"156c5cc9.6dcff3","name":"","group":"361b3bb5.39cbf4","order":0,"width":0,"height":0,"passthru":true,"label":"Borrar","color":"","bgcolor":"","icon":"","payload":"DELETE:","payloadType":"str","topic":"","x":170,"y":660,"wires":[["3453e7f6.d6c408"]]},{"id":"83e5b39f.b63ea","type":"ui_button","z":"156c5cc9.6dcff3","name":"","group":"361b3bb5.39cbf4","order":0,"width":0,"height":0,"passthru":true,"label":"Borrar Todas","color":"","bgcolor":"","icon":"","payload":"DELETEALL","payloadType":"str","topic":"","x":190,"y":700,"wires":[["235745ce.3288fa"]]},{"id":"4f0deef9.29deb","type":"ui_text_input","z":"156c5cc9.6dcff3","name":"","label":"# Clave","group":"361b3bb5.39cbf4","order":0,"width":0,"height":0,"passthru":false,"mode":"tel","delay":300,"topic":"","x":160,"y":880,"wires":[["61d35bd8.e80f74"]]},{"id":"61d35bd8.e80f74","type":"function","z":"156c5cc9.6dcff3","name":"","func":"global.set(\"numClave\",msg.payload);\nreturn msg;","outputs":1,"noerr":0,"x":350,"y":880,"wires":[[]]},{"id":"e698b951.f6b778","type":"function","z":"156c5cc9.6dcff3","name":"","func":"msg.payload+=global.get(\"claveActual\");\nreturn msg;","outputs":1,"noerr":0,"x":310,"y":580,"wires":[["696eaab7.e76d94","235745ce.3288fa"]]},{"id":"696eaab7.e76d94","type":"debug","z":"156c5cc9.6dcff3","name":"Create","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","x":550,"y":580,"wires":[]},{"id":"3453e7f6.d6c408","type":"function","z":"156c5cc9.6dcff3","name":"","func":"msg.payload+=global.get(\"numClave\");\nreturn msg;","outputs":1,"noerr":0,"x":310,"y":660,"wires":[["6b186304.544acc","235745ce.3288fa"]]},{"id":"6b186304.544acc","type":"debug","z":"156c5cc9.6dcff3","name":"Delete","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","x":550,"y":660,"wires":[]},{"id":"9eb62312.fd827","type":"function","z":"156c5cc9.6dcff3","name":"","func":"msg.payload+=global.get(\"claveActual\");\nmsg.payload+=\":\";\nmsg.payload+=global.get(\"numClave\");\nreturn msg;","outputs":1,"noerr":0,"x":310,"y":620,"wires":[["bee22ada.a60548","235745ce.3288fa"]]},{"id":"bee22ada.a60548","type":"debug","z":"156c5cc9.6dcff3","name":"Update","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","x":540,"y":620,"wires":[]},{"id":"3b53c8c0.609348","type":"mqtt in","z":"156c5cc9.6dcff3","name":"","topic":"healthcheck.conjunto1.1-101","qos":"2","broker":"3870aa56.895d06","x":260,"y":460,"wires":[["6180cda1.c36f24"]]},{"id":"64a32588.a1a04c","type":"ui_gauge","z":"156c5cc9.6dcff3","name":"","group":"cf07e631.8c9a68","order":0,"width":0,"height":0,"gtype":"gage","title":"Gauge","label":"/10 Check","format":"{{value}}","min":0,"max":"10","colors":["#b50000","#e6e600","#00ff40"],"seg1":"","seg2":"","x":710,"y":460,"wires":[]},{"id":"6180cda1.c36f24","type":"function","z":"156c5cc9.6dcff3","name":"","func":"\n    msg.payload=10;\n\nreturn msg;","outputs":1,"noerr":0,"x":510,"y":460,"wires":[["64a32588.a1a04c","ba389d77.3be91"]]},{"id":"8d853041.1c82c","type":"function","z":"156c5cc9.6dcff3","name":"","func":"global.set(\"max\",msg.payload);\nreturn msg;","outputs":1,"noerr":0,"x":350,"y":760,"wires":[[]]},{"id":"48fdedc6.bf87e4","type":"ui_text_input","z":"156c5cc9.6dcff3","name":"","label":"Numero Maximo de HealthChecks Perdidos","group":"cf07e631.8c9a68","order":0,"width":0,"height":0,"passthru":true,"mode":"text","delay":300,"topic":"","x":270,"y":760,"wires":[["8d853041.1c82c","8ccbeead.575b9"]]},{"id":"8ccbeead.575b9","type":"ui_text","z":"156c5cc9.6dcff3","group":"cf07e631.8c9a68","order":0,"width":0,"height":0,"name":"","label":"Numero Maximo de HealthChecks Perdidos","format":"{{msg.payload}}","layout":"row-spread","x":690,"y":800,"wires":[]},{"id":"7ce692af.c44f2c","type":"ui_text_input","z":"156c5cc9.6dcff3","name":"","label":"Intervalo en segundos","group":"cf07e631.8c9a68","order":0,"width":0,"height":0,"passthru":true,"mode":"text","delay":300,"topic":"","x":600,"y":880,"wires":[["3e8f8500.a5455c"]]},{"id":"3e8f8500.a5455c","type":"function","z":"156c5cc9.6dcff3","name":"","func":"global.set(\"intervalo\",msg.payload);\nreturn msg;","outputs":1,"noerr":0,"x":830,"y":880,"wires":[[]]},{"id":"92ad6d19.a43bf","type":"ui_button","z":"156c5cc9.6dcff3","name":"","group":"cf07e631.8c9a68","order":0,"width":0,"height":0,"passthru":true,"label":"Actualizar Intervalo","color":"","bgcolor":"","icon":"","payload":"HEALTHCHECK:","payloadType":"str","topic":"","x":790,"y":620,"wires":[["46cfdbfb.f2c884"]]},{"id":"46cfdbfb.f2c884","type":"function","z":"156c5cc9.6dcff3","name":"","func":"msg.payload+=global.get(\"intervalo\");\nreturn msg;","outputs":1,"noerr":0,"x":990,"y":620,"wires":[["248408d8.e0fcd8","6327cdb5.cfe254"]]},{"id":"248408d8.e0fcd8","type":"debug","z":"156c5cc9.6dcff3","name":"Create","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","x":1130,"y":620,"wires":[]},{"id":"6327cdb5.cfe254","type":"mqtt out","z":"156c5cc9.6dcff3","name":"","topic":"healthcheck.conjunto1.1-101","qos":"","retain":"","broker":"a83015d.ae262e8","x":1160,"y":720,"wires":[]},{"id":"ba389d77.3be91","type":"ui_chart","z":"156c5cc9.6dcff3","name":"","group":"cf07e631.8c9a68","order":0,"width":0,"height":0,"label":"chart","chartType":"line","legend":"false","xformat":"HH:mm:ss","interpolate":"linear","nodata":"","dot":false,"ymin":"","ymax":"","removeOlder":1,"removeOlderPoints":"","removeOlderUnit":"3600","cutout":0,"useOneColor":false,"colors":["#1f77b4","#aec7e8","#ff7f0e","#2ca02c","#98df8a","#d62728","#ff9896","#9467bd","#c5b0d5"],"useOldStyle":false,"x":720,"y":520,"wires":[[],[]]},{"id":"a83015d.ae262e8","type":"mqtt-broker","z":"","name":"","broker":"192.168.0.7","port":"1883","tls":"68017d23.2fb5e4","clientid":"","usetls":false,"compatmode":true,"keepalive":"60","cleansession":true,"willTopic":"","willQos":"0","willPayload":"","birthTopic":"","birthQos":"0","birthPayload":""},{"id":"3870aa56.895d06","type":"mqtt-broker","z":"","name":"","broker":"192.168.0.7","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"60","cleansession":true,"willTopic":"","willQos":"0","willPayload":"","birthTopic":"","birthQos":"0","birthPayload":""},{"id":"361b3bb5.39cbf4","type":"ui_group","z":"","name":"Claves","tab":"fc63c7c0.030e58","order":1,"disp":true,"width":"12","collapse":false},{"id":"cf07e631.8c9a68","type":"ui_group","z":"","name":"HealthChecks","tab":"aac68475.7b6aa8","disp":true,"width":"8","collapse":false},{"id":"68017d23.2fb5e4","type":"tls-config","z":"","name":"","cert":"","key":"","ca":"","certname":"","keyname":"","caname":"m2mqtt_ca.crt","verifyservercert":false},{"id":"fc63c7c0.030e58","type":"ui_tab","z":"","name":"Manejo de Claves","icon":"dashboard"},{"id":"aac68475.7b6aa8","type":"ui_tab","z":"","name":"HealthChecks","icon":"dashboard"}]
+[
+    {
+        "id": "e4b9d186.6567c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "53cfc059.21a2c",
+        "type": "mqtt out",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "claves.conjunto1.1-101",
+        "qos": "",
+        "retain": "",
+        "broker": "d4d19ebc.98ba5",
+        "x": 650,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "dceb99c3.88e3a8",
+        "type": "inject",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 740,
+        "y": 260,
+        "wires": [
+            [
+                "de6f50b2.9c287"
+            ]
+        ]
+    },
+    {
+        "id": "de6f50b2.9c287",
+        "type": "mqtt out",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "alarma.conjunto1.baja.1-101.pre",
+        "qos": "",
+        "retain": "",
+        "broker": "d4d19ebc.98ba5",
+        "x": 990,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2dc7722c.f0d46e",
+        "type": "mqtt out",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "claves.conjunto1.1-101",
+        "qos": "",
+        "retain": "",
+        "broker": "d4d19ebc.98ba5",
+        "x": 1010,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6880e54.833311c",
+        "type": "mqtt out",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "alarma/conjunto1/alta/1-101/pre",
+        "qos": "",
+        "retain": "",
+        "broker": "d4d19ebc.98ba5",
+        "x": 990,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1662a180.3a2c8f",
+        "type": "mqtt out",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "healthcheck.conjunto1.1-101",
+        "qos": "",
+        "retain": "",
+        "broker": "d4d19ebc.98ba5",
+        "x": 1000,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b1cd3738.50f858",
+        "type": "inject",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 730,
+        "y": 320,
+        "wires": [
+            [
+                "1662a180.3a2c8f"
+            ]
+        ]
+    },
+    {
+        "id": "7da9cdd.0f90934",
+        "type": "inject",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 740,
+        "y": 380,
+        "wires": [
+            [
+                "2dc7722c.f0d46e"
+            ]
+        ]
+    },
+    {
+        "id": "5e589416.22c6cc",
+        "type": "inject",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "",
+        "payload": "2",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 730,
+        "y": 200,
+        "wires": [
+            [
+                "6880e54.833311c"
+            ]
+        ]
+    },
+    {
+        "id": "552f9a1.d67e264",
+        "type": "mqtt in",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "alarma.conjunto1.alta.1-101.pre",
+        "qos": "2",
+        "broker": "d41f0490.5ae178",
+        "x": 270,
+        "y": 200,
+        "wires": [
+            [
+                "5d5e851e.72db0c"
+            ]
+        ]
+    },
+    {
+        "id": "59bf4c9d.5b2fe4",
+        "type": "mqtt in",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "alarma.conjunto1.baja.1-101.pre",
+        "qos": "2",
+        "broker": "d41f0490.5ae178",
+        "x": 270,
+        "y": 260,
+        "wires": [
+            [
+                "aa87bea.e31794"
+            ]
+        ]
+    },
+    {
+        "id": "51a69bfc.e1e1e4",
+        "type": "mqtt in",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "healthcheck.conjunto1.1-101",
+        "qos": "2",
+        "broker": "d41f0490.5ae178",
+        "x": 260,
+        "y": 320,
+        "wires": [
+            [
+                "4aae18bf.75dad8"
+            ]
+        ]
+    },
+    {
+        "id": "22058b61.ae3724",
+        "type": "mqtt in",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "claves.conjunto1.1-101",
+        "qos": "2",
+        "broker": "d41f0490.5ae178",
+        "x": 240,
+        "y": 380,
+        "wires": [
+            [
+                "2fce3b16.59d7f4"
+            ]
+        ]
+    },
+    {
+        "id": "5d5e851e.72db0c",
+        "type": "debug",
+        "z": "e4b9d186.6567c",
+        "name": "ALTA",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 530,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "aa87bea.e31794",
+        "type": "debug",
+        "z": "e4b9d186.6567c",
+        "name": "BAJA",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 530,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "4aae18bf.75dad8",
+        "type": "debug",
+        "z": "e4b9d186.6567c",
+        "name": "HEALTH",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 520,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "2fce3b16.59d7f4",
+        "type": "debug",
+        "z": "e4b9d186.6567c",
+        "name": "CLAVES",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 520,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "64178efa.45c39",
+        "type": "ui_button",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "group": "225e8737.4aea58",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Crear",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "CREATE:",
+        "payloadType": "str",
+        "topic": "",
+        "x": 170,
+        "y": 740,
+        "wires": [
+            [
+                "33358027.dd6e7"
+            ]
+        ]
+    },
+    {
+        "id": "724a547b.5d004c",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "global.set(\"claveActual\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20bc81b2.a1c3fe",
+        "type": "ui_text_input",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "label": "Clave",
+        "group": "225e8737.4aea58",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "mode": "tel",
+        "delay": 300,
+        "topic": "",
+        "x": 150,
+        "y": 980,
+        "wires": [
+            [
+                "724a547b.5d004c"
+            ]
+        ]
+    },
+    {
+        "id": "58dcbce4.a70934",
+        "type": "ui_button",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "group": "225e8737.4aea58",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Modificar",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "UPDATE:",
+        "payloadType": "str",
+        "topic": "",
+        "x": 180,
+        "y": 780,
+        "wires": [
+            [
+                "83a3a047.188e5"
+            ]
+        ]
+    },
+    {
+        "id": "54573e38.888b1",
+        "type": "ui_button",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "group": "225e8737.4aea58",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Borrar",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "DELETE:",
+        "payloadType": "str",
+        "topic": "",
+        "x": 170,
+        "y": 820,
+        "wires": [
+            [
+                "a634956a.e489a8"
+            ]
+        ]
+    },
+    {
+        "id": "230be845.89cf58",
+        "type": "ui_button",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "group": "225e8737.4aea58",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Borrar Todas",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "DELETEALL",
+        "payloadType": "str",
+        "topic": "",
+        "x": 190,
+        "y": 860,
+        "wires": [
+            [
+                "53cfc059.21a2c"
+            ]
+        ]
+    },
+    {
+        "id": "c0371335.da488",
+        "type": "ui_text_input",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "label": "# Clave",
+        "group": "225e8737.4aea58",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "tel",
+        "delay": 300,
+        "topic": "",
+        "x": 160,
+        "y": 1040,
+        "wires": [
+            [
+                "1084287a.d46b38"
+            ]
+        ]
+    },
+    {
+        "id": "1084287a.d46b38",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "global.set(\"numClave\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "33358027.dd6e7",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "msg.payload+=global.get(\"claveActual\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 740,
+        "wires": [
+            [
+                "875dc0b7.c1f4a",
+                "53cfc059.21a2c"
+            ]
+        ]
+    },
+    {
+        "id": "875dc0b7.c1f4a",
+        "type": "debug",
+        "z": "e4b9d186.6567c",
+        "name": "Create",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 550,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "a634956a.e489a8",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "msg.payload+=global.get(\"numClave\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 820,
+        "wires": [
+            [
+                "48a2d04d.28f1",
+                "53cfc059.21a2c"
+            ]
+        ]
+    },
+    {
+        "id": "48a2d04d.28f1",
+        "type": "debug",
+        "z": "e4b9d186.6567c",
+        "name": "Delete",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 550,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "83a3a047.188e5",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "msg.payload+=global.get(\"claveActual\");\nmsg.payload+=\":\";\nmsg.payload+=global.get(\"numClave\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 780,
+        "wires": [
+            [
+                "9e661b30.760928",
+                "53cfc059.21a2c"
+            ]
+        ]
+    },
+    {
+        "id": "9e661b30.760928",
+        "type": "debug",
+        "z": "e4b9d186.6567c",
+        "name": "Update",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 540,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "25410fe8.29d92",
+        "type": "mqtt in",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "healthcheck.conjunto1.1-101",
+        "qos": "2",
+        "broker": "d41f0490.5ae178",
+        "x": 260,
+        "y": 620,
+        "wires": [
+            [
+                "fac8e9bf.f50478"
+            ]
+        ]
+    },
+    {
+        "id": "ff1066ef.5bfbd8",
+        "type": "ui_gauge",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "group": "dff5ab4f.92ea98",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Gauge",
+        "label": "/10 Check",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "10",
+        "colors": [
+            "#b50000",
+            "#e6e600",
+            "#00ff40"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 710,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "fac8e9bf.f50478",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "if(msg.payload===\"0\")\n{\n    global.set(\"timeH\",global.get(\"time\"));\n    msg.payload=10;\n}\nelse\n{\n    var timee=global.get(\"time\");\n    var timehh=global.get(\"timeH\");\n    var inter=global.get(\"intervalo\");\n    var maxx=global.get(\"max\");\n    msg.payload=10;\n    if((timee-timehh)>(inter*maxx*1000))\n    {\n    msg.payload=1;    \n    }\n    \n}\n    \n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 620,
+        "wires": [
+            [
+                "ff1066ef.5bfbd8",
+                "fd45704.a305b9",
+                "34e72e21.2ae032"
+            ]
+        ]
+    },
+    {
+        "id": "a6ae16a0.e283b8",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "global.set(\"max\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9868c5c.4491a",
+        "type": "ui_text_input",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "label": "Numero Maximo de HealthChecks Perdidos",
+        "group": "dff5ab4f.92ea98",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 170,
+        "y": 940,
+        "wires": [
+            [
+                "a6ae16a0.e283b8",
+                "ab656707.f01968"
+            ]
+        ]
+    },
+    {
+        "id": "ab656707.f01968",
+        "type": "ui_text",
+        "z": "e4b9d186.6567c",
+        "group": "dff5ab4f.92ea98",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Numero Maximo de HealthChecks Perdidos",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 690,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "37fb2175.69da0e",
+        "type": "ui_text_input",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "label": "Intervalo en segundos",
+        "group": "dff5ab4f.92ea98",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 600,
+        "y": 1040,
+        "wires": [
+            [
+                "4e4e8b9d.b44464"
+            ]
+        ]
+    },
+    {
+        "id": "4e4e8b9d.b44464",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "global.set(\"intervalo\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 830,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2f643ea.a4f34c2",
+        "type": "ui_button",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "group": "dff5ab4f.92ea98",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Actualizar Intervalo",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "HEALTHCHECK:",
+        "payloadType": "str",
+        "topic": "",
+        "x": 790,
+        "y": 780,
+        "wires": [
+            [
+                "c390afe5.843db"
+            ]
+        ]
+    },
+    {
+        "id": "c390afe5.843db",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "msg.payload=global.get(\"intervalo\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 990,
+        "y": 680,
+        "wires": [
+            [
+                "d50bb7f6.d3af28",
+                "67531b35.d70ce4"
+            ]
+        ]
+    },
+    {
+        "id": "d50bb7f6.d3af28",
+        "type": "debug",
+        "z": "e4b9d186.6567c",
+        "name": "Create",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1130,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "67531b35.d70ce4",
+        "type": "mqtt out",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "healthcheck.conjunto1.1-101",
+        "qos": "",
+        "retain": "",
+        "broker": "d4d19ebc.98ba5",
+        "x": 1160,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "fd45704.a305b9",
+        "type": "ui_chart",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "group": "dff5ab4f.92ea98",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 720,
+        "y": 680,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "20033f2.6f373c",
+        "type": "mqtt out",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "holi",
+        "qos": "",
+        "retain": "",
+        "broker": "d4d19ebc.98ba5",
+        "x": 910,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "52371d16.52ff04",
+        "type": "inject",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "",
+        "payload": "2",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 730,
+        "y": 140,
+        "wires": [
+            [
+                "20033f2.6f373c"
+            ]
+        ]
+    },
+    {
+        "id": "f8661d80.a4cf4",
+        "type": "e-mail",
+        "z": "e4b9d186.6567c",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "name": "rafafor26@gmail.com",
+        "dname": "",
+        "x": 900,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "b462c421.5239a8",
+        "type": "inject",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 230,
+        "y": 680,
+        "wires": [
+            [
+                "3b8da2e1.ead57e"
+            ]
+        ]
+    },
+    {
+        "id": "3b8da2e1.ead57e",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "global.set(\"time\",msg.payload);\nmsg.payload=\"1\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 680,
+        "wires": [
+            [
+                "fac8e9bf.f50478"
+            ]
+        ]
+    },
+    {
+        "id": "34e72e21.2ae032",
+        "type": "debug",
+        "z": "e4b9d186.6567c",
+        "name": "TEST",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 550,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "68fdb0ec.5f262",
+        "type": "mqtt out",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "hub.healthcheck.conjunto1.1-101",
+        "qos": "",
+        "retain": "",
+        "broker": "d4d19ebc.98ba5",
+        "x": 480,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9d34177b.cfd178",
+        "type": "inject",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 460,
+        "wires": [
+            [
+                "68fdb0ec.5f262"
+            ]
+        ]
+    },
+    {
+        "id": "d4d19ebc.98ba5",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "172.24.42.103",
+        "port": "8083",
+        "tls": "a7c6ba36.41b088",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "d41f0490.5ae178",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "172.24.42.103",
+        "port": "8083",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "225e8737.4aea58",
+        "type": "ui_group",
+        "z": "",
+        "name": "Claves",
+        "tab": "1c90389d.b43e87",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "dff5ab4f.92ea98",
+        "type": "ui_group",
+        "z": "",
+        "name": "HealthChecks",
+        "tab": "59c83e03.f2d72",
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "a7c6ba36.41b088",
+        "type": "tls-config",
+        "z": "",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "m2mqtt_ca.crt",
+        "verifyservercert": false
+    },
+    {
+        "id": "1c90389d.b43e87",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Manejo de Claves",
+        "icon": "dashboard"
+    },
+    {
+        "id": "59c83e03.f2d72",
+        "type": "ui_tab",
+        "z": "",
+        "name": "HealthChecks",
+        "icon": "dashboard"
+    }
+]
